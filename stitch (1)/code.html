@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>ALUON | Premium Industrial Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed-dim": "#ffb3af",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#1c1831",
+                        "error": "#ba1a1a",
+                        "primary": "#a92f32",
+                        "on-secondary-fixed-variant": "#48435e",
+                        "surface-variant": "#e5e2e1",
+                        "surface": "#fcf9f8",
+                        "on-surface": "#1b1b1b",
+                        "tertiary-fixed": "#e4e2e1",
+                        "secondary": "#605b77",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "background": "#fcf9f8",
+                        "on-primary-fixed": "#410005",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-container": "#fffbff",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-tint": "#ac3134",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#cac2e3",
+                        "surface-container-highest": "#e5e2e1",
+                        "secondary-fixed": "#e6deff",
+                        "outline": "#8c716f",
+                        "surface-bright": "#fcf9f8",
+                        "tertiary": "#5c5c5c",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container": "#f0eded",
+                        "primary-fixed": "#ffdad7",
+                        "on-background": "#1b1b1b",
+                        "primary-container": "#ca4748",
+                        "on-primary-fixed-variant": "#8b1820",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary-container": "#fffcfb",
+                        "inverse-surface": "#313030",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-secondary-container": "#645f7b",
+                        "inverse-primary": "#ffb3af",
+                        "on-surface-variant": "#584140",
+                        "tertiary-container": "#757474",
+                        "secondary-container": "#e3dbfd",
+                        "outline-variant": "#dfbfbd"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .text-shadow-sm {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .glass-panel {
+            background: rgba(252, 249, 248, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#fcf9f8] dark:bg-stone-900">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#a92f32] cursor-pointer active:scale-95 duration-200">menu</span>
+<h1 class="text-xl font-black tracking-[-0.02em] text-[#1b1b1b] dark:text-[#fcf9f8] font-space-grotesk">ALUON</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-inter text-[10px] uppercase tracking-widest font-bold text-[#a92f32] scale-110" href="#">Models</a>
+<a class="font-inter text-[10px] uppercase tracking-widest font-bold text-[#605b77] hover:text-[#a92f32] transition-colors" href="#">Measure</a>
+<a class="font-inter text-[10px] uppercase tracking-widest font-bold text-[#605b77] hover:text-[#a92f32] transition-colors" href="#">Quotes</a>
+</nav>
+<span class="material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200">account_circle</span>
+</div>
+</header>
+<main class="pt-16 pb-24 md:pb-0">
+<section class="bg-surface-container-low px-4 md:px-16 pt-6 pb-10">
+<div class="max-w-5xl">
+<div class="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold mb-2">Models</div>
+<h2 class="font-headline font-bold text-2xl md:text-3xl tracking-tight mb-6">Selector de modelo</h2>
+<div class="grid grid-cols-1 lg:grid-cols-[320px,1fr] gap-6 items-start">
+<div class="bg-surface p-6">
+<label class="block text-[10px] uppercase tracking-[0.2em] text-secondary font-bold mb-3" for="model-select">Models</label>
+<select class="w-full bg-surface-container-low p-3 text-sm" id="model-select">
+<option value="classic" data-img="https://lh3.googleusercontent.com/aida/ADBb0uiebGKLGBRT0wo14PE-WUeV_qVbkbDpHp2gdfiTeszcsMzOqpQMv-g75cW7FWliyxfRvaEVDdsYnCqCba5Xk86XB0YbxmsVIL9agxKb6n9FF1Z3swGn4D_CtZg5XWZpgsg8gNYbBH9U0aDkerLP1VaFJ1I1ID-emNqJhc9Cb8E5nEk-eGfpEn4BsCKvCfEFa6-3h8MWUPblJyMEPk7FnwfyzkNFlGcjwcZ42xAWrBqSuoLiTwhaxBcTtqchpjbECUbZyr1rO2m2Yw" data-title="ALUON CLASSIC" data-desc="Proven durability and timeless industrial design for standard architectural builds.">Aluon Classic</option>
+<option value="bisel" data-img="https://lh3.googleusercontent.com/aida/ADBb0uiPbn_jSaU9PGOgwMEM3OjYK2pBwIh32R6FQ2FaCWrxBjV59ACJWp8_QU6zpmLcLo75oU6H-pr4j71wShlbmiK3RkGRJF83SUr057i6XFltaDL-uc5x1Xkk4vY-mw_k4Sk0HeeZShCqLc9D3ol_HWnZIHlSOwQSkRRrZJBaelu80qkajVVlHyJOFn73PjB9o-AB79tqUf14JpKC_ReXkoFoj5a6Dd9Iu8WXA9r4kozi9v3-T99KzIyE9yY_j4vkDhkff5oNyBrv" data-title="ALUON BISEL" data-desc="Sophisticated beveled edges providing refined shadow lines and depth.">Aluon Bisel</option>
+<option value="inox" data-img="https://lh3.googleusercontent.com/aida/ADBb0ui97HSSi8VFlm1VV6kbgOhJq8CXQzwN2POUScMEiP6OkmtQb2jvy365vX9Dh4c0P6pmSZfjHZTn48GMHoRsBrcCneKkXIEZ0bHHkq27izvHA7Qjs4U2d2-t0UupaFLH-vO6z4sgUk9KOAksggNPDWgDOcTluvR-QkADThdvlBzGWfYQ-X5FyTEJsPZtssIUfDuqa-j1R6-VkVmNHstmxvk-eKlBLRNKEZYqFb2-2P57xZZUhkxB2Xxkjunm0KG2uO59YGdjL0gTyQ" data-title="ALUON INOX" data-desc="Integrating stainless steel accents for enhanced structural integrity and aesthetics.">Aluon Inox</option>
+<option value="veneciana" data-img="https://lh3.googleusercontent.com/aida/ADBb0ujTgpa1xe0I908Lg-0eXCFPXENeDKIiYVVqY76iiZokdA3uH3wcWU6UlC0y6Pftiw-9_lXGrHYrSOQ-rmJMwjgCr8f2S-O8U3CDdfdqQYYTCTb9DYfMh1r9psLMemMkIc-PbqUi7ec9bhSwtYVcoM2EO32JaMJhzllcwon13wymXtxLxuCVZn1SiGQEmfV1olC3ihXakkgDt38hj-pA9KjyZ9cACNM6IEd_GvYiSy_gMa2zAwWKVaztqDtXpLIvmkCYJVMZatMKKQ" data-title="ALUON VENECIANA" data-desc="Adjustable slat technology for light control and modern ventilation.">Aluon Veneciana</option>
+</select>
+<div class="mt-5 space-y-3">
+<div class="text-primary text-[10px] font-bold tracking-[0.2em]" id="model-tag">FOUNDATION</div>
+<div class="font-headline font-bold text-2xl" id="model-title">ALUON CLASSIC</div>
+<p class="text-secondary text-sm leading-relaxed" id="model-desc">Proven durability and timeless industrial design for standard architectural builds.</p>
+</div>
+</div>
+<div class="bg-on-surface overflow-hidden aspect-[16/9]">
+<img alt="Aluon Classic" class="w-full h-full object-cover transition-opacity duration-500 opacity-100" id="model-preview" src="https://lh3.googleusercontent.com/aida/ADBb0uiebGKLGBRT0wo14PE-WUeV_qVbkbDpHp2gdfiTeszcsMzOqpQMv-g75cW7FWliyxfRvaEVDdsYnCqCba5Xk86XB0YbxmsVIL9agxKb6n9FF1Z3swGn4D_CtZg5XWZpgsg8gNYbBH9U0aDkerLP1VaFJ1I1ID-emNqJhc9Cb8E5nEk-eGfpEn4BsCKvCfEFa6-3h8MWUPblJyMEPk7FnwfyzkNFlGcjwcZ42xAWrBqSuoLiTwhaxBcTtqchpjbECUbZyr1rO2m2Yw"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Hero: Immersive Visual Selection -->
+<section class="relative h-[751px] w-full overflow-hidden bg-on-surface">
+<div class="absolute inset-0 opacity-70">
+<img alt="Aluon Premium Architectural Model" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ug7Q892Jb5un6OAst8Y1FHcQc8qqrkvxrqX06PNZSZhmHcUiur9rFdq040Yk5PL4fEgTR2xZh5eSxj4NbJmFjdTeaXhjr3ModqX_2HonQ8OZ3xhgnuIJu7PY6YdedaBVfAF8ptYyu7i2mQW7CJdjfZMBTgLm2fsr-tXrcuujNTKQJTLHyJLP4ATSYd3KPhp3Bu4xXdebMYRfnzG8BCqxW4-DSuOi5Dwu5vKxOoZWcyV2xCBZUR-HUg3TIb9qaZymFmAPUZbmP5snw"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface via-transparent to-transparent"></div>
+<div class="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
+<div class="max-w-4xl">
+<span class="inline-block px-3 py-1 bg-primary text-on-primary text-[10px] font-bold tracking-widest uppercase mb-4">PREMIUM SERIES</span>
+<h2 class="font-headline font-bold text-5xl md:text-8xl text-surface leading-[0.9] tracking-tighter mb-6">ALUON <br/>PREMIUM</h2>
+<p class="text-surface/80 text-lg md:text-xl max-w-xl mb-8 font-light leading-relaxed">The pinnacle of industrial elegance. High-impact architectural structures for contemporary engineering projects.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 text-xs font-bold uppercase tracking-widest flex items-center gap-3 active:scale-95 transition-all">
+                            Start Configuration
+                            <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+</button>
+<button class="bg-surface/10 backdrop-blur-md border border-surface/20 text-surface px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-surface hover:text-on-surface transition-all">
+                            Technical Data
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Model Selector: Edge-to-Edge Cards -->
+<section class="bg-surface-container-low py-20 px-4 md:px-16">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h3 class="font-headline font-bold text-3xl tracking-tight">Select Profile</h3>
+<p class="text-secondary text-sm mt-2">Explore our full range of precision aluminum solutions</p>
+</div>
+<div class="hidden md:flex gap-2">
+<button class="w-12 h-12 flex items-center justify-center bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Aluon Classic -->
+<div class="group relative aspect-[4/5] overflow-hidden bg-on-surface">
+<img alt="Aluon Classic" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/ADBb0uiebGKLGBRT0wo14PE-WUeV_qVbkbDpHp2gdfiTeszcsMzOqpQMv-g75cW7FWliyxfRvaEVDdsYnCqCba5Xk86XB0YbxmsVIL9agxKb6n9FF1Z3swGn4D_CtZg5XWZpgsg8gNYbBH9U0aDkerLP1VaFJ1I1ID-emNqJhc9Cb8E5nEk-eGfpEn4BsCKvCfEFa6-3h8MWUPblJyMEPk7FnwfyzkNFlGcjwcZ42xAWrBqSuoLiTwhaxBcTtqchpjbECUbZyr1rO2m2Yw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<span class="text-primary text-[10px] font-bold tracking-[0.2em] mb-2">FOUNDATION</span>
+<h4 class="text-surface font-headline font-bold text-2xl mb-4">ALUON CLASSIC</h4>
+<div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500">
+<p class="text-surface/70 text-sm mb-6">Proven durability and timeless industrial design for standard architectural builds.</p>
+</div>
+<div class="h-0.5 w-8 bg-primary transition-all duration-500 group-hover:w-full"></div>
+</div>
+</div>
+<!-- Aluon Bisel -->
+<div class="group relative aspect-[4/5] overflow-hidden bg-on-surface">
+<img alt="Aluon Bisel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/ADBb0uiPbn_jSaU9PGOgwMEM3OjYK2pBwIh32R6FQ2FaCWrxBjV59ACJWp8_QU6zpmLcLo75oU6H-pr4j71wShlbmiK3RkGRJF83SUr057i6XFltaDL-uc5x1Xkk4vY-mw_k4Sk0HeeZShCqLc9D3ol_HWnZIHlSOwQSkRRrZJBaelu80qkajVVlHyJOFn73PjB9o-AB79tqUf14JpKC_ReXkoFoj5a6Dd9Iu8WXA9r4kozi9v3-T99KzIyE9yY_j4vkDhkff5oNyBrv"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<span class="text-primary text-[10px] font-bold tracking-[0.2em] mb-2">PRECISION EDGE</span>
+<h4 class="text-surface font-headline font-bold text-2xl mb-4">ALUON BISEL</h4>
+<div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500">
+<p class="text-surface/70 text-sm mb-6">Sophisticated beveled edges providing refined shadow lines and depth.</p>
+</div>
+<div class="h-0.5 w-8 bg-primary transition-all duration-500 group-hover:w-full"></div>
+</div>
+</div>
+<!-- Aluon Inox -->
+<div class="group relative aspect-[4/5] overflow-hidden bg-on-surface">
+<img alt="Aluon Inox" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/ADBb0ui97HSSi8VFlm1VV6kbgOhJq8CXQzwN2POUScMEiP6OkmtQb2jvy365vX9Dh4c0P6pmSZfjHZTn48GMHoRsBrcCneKkXIEZ0bHHkq27izvHA7Qjs4U2d2-t0UupaFLH-vO6z4sgUk9KOAksggNPDWgDOcTluvR-QkADThdvlBzGWfYQ-X5FyTEJsPZtssIUfDuqa-j1R6-VkVmNHstmxvk-eKlBLRNKEZYqFb2-2P57xZZUhkxB2Xxkjunm0KG2uO59YGdjL0gTyQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<span class="text-primary text-[10px] font-bold tracking-[0.2em] mb-2">HYBRID CORE</span>
+<h4 class="text-surface font-headline font-bold text-2xl mb-4">ALUON INOX</h4>
+<div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500">
+<p class="text-surface/70 text-sm mb-6">Integrating stainless steel accents for enhanced structural integrity and aesthetics.</p>
+</div>
+<div class="h-0.5 w-8 bg-primary transition-all duration-500 group-hover:w-full"></div>
+</div>
+</div>
+<!-- Aluon Veneciana -->
+<div class="group relative aspect-[4/5] overflow-hidden bg-on-surface">
+<img alt="Aluon Veneciana" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/ADBb0ujTgpa1xe0I908Lg-0eXCFPXENeDKIiYVVqY76iiZokdA3uH3wcWU6UlC0y6Pftiw-9_lXGrHYrSOQ-rmJMwjgCr8f2S-O8U3CDdfdqQYYTCTb9DYfMh1r9psLMemMkIc-PbqUi7ec9bhSwtYVcoM2EO32JaMJhzllcwon13wymXtxLxuCVZn1SiGQEmfV1olC3ihXakkgDt38hj-pA9KjyZ9cACNM6IEd_GvYiSy_gMa2zAwWKVaztqDtXpLIvmkCYJVMZatMKKQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<span class="text-primary text-[10px] font-bold tracking-[0.2em] mb-2">DYNAMIC FLOW</span>
+<h4 class="text-surface font-headline font-bold text-2xl mb-4">ALUON VENECIANA</h4>
+<div class="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500">
+<p class="text-surface/70 text-sm mb-6">Adjustable slat technology for light control and modern ventilation.</p>
+</div>
+<div class="h-0.5 w-8 bg-primary transition-all duration-500 group-hover:w-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Measurement Overlay Section -->
+<section class="bg-surface py-20 px-4 md:px-16">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative group">
+<div class="aspect-video bg-surface-container-high overflow-hidden">
+<img alt="Engineering Detail Aluon Inox" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida/ADBb0ui97HSSi8VFlm1VV6kbgOhJq8CXQzwN2POUScMEiP6OkmtQb2jvy365vX9Dh4c0P6pmSZfjHZTn48GMHoRsBrcCneKkXIEZ0bHHkq27izvHA7Qjs4U2d2-t0UupaFLH-vO6z4sgUk9KOAksggNPDWgDOcTluvR-QkADThdvlBzGWfYQ-X5FyTEJsPZtssIUfDuqa-j1R6-VkVmNHstmxvk-eKlBLRNKEZYqFb2-2P57xZZUhkxB2Xxkjunm0KG2uO59YGdjL0gTyQ"/>
+</div>
+<!-- Integrated Measurement Overlays -->
+<div class="absolute top-1/4 left-1/4 flex flex-col items-center">
+<div class="w-px h-16 bg-primary"></div>
+<div class="bg-surface-container-lowest glass-panel border-l-2 border-primary px-3 py-1 shadow-lg">
+<span class="font-headline font-bold text-xs">H: 2100.0mm</span>
+</div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 flex items-center">
+<div class="bg-surface-container-lowest glass-panel border-t-2 border-primary px-3 py-1 shadow-lg">
+<span class="font-headline font-bold text-xs">W: 3500.0mm</span>
+</div>
+<div class="h-px w-16 bg-primary"></div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="w-12 h-12 rounded-full border border-primary/50 flex items-center justify-center animate-pulse">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<span class="label-sm text-secondary uppercase tracking-[0.2em] font-bold">Precision Metrics</span>
+<h3 class="font-headline font-bold text-4xl md:text-5xl leading-tight tracking-tight">MICRON-PERFECT <br/> FABRICATION.</h3>
+<p class="text-secondary leading-relaxed">Our automated measurement systems ensure that every cut and weld falls within a +/- 0.05mm tolerance threshold. The data is integrated directly into your CAD workflow.</p>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-4 border-b border-outline-variant/15">
+<span class="text-sm font-medium">Tolerance Level</span>
+<span class="font-headline font-bold text-primary">0.05mm</span>
+</div>
+<div class="flex justify-between items-center py-4 border-b border-outline-variant/15">
+<span class="text-sm font-medium">Standard Span</span>
+<span class="font-headline font-bold">Up to 6000mm</span>
+</div>
+<div class="flex justify-between items-center py-4 border-b border-outline-variant/15">
+<span class="text-sm font-medium">Finish Uniformity</span>
+<span class="font-headline font-bold">99.9%</span>
+</div>
+</div>
+<button class="w-full bg-on-surface text-surface py-5 font-bold uppercase tracking-widest text-xs hover:bg-primary transition-colors flex items-center justify-center gap-3">
+                        REQUEST FULL SPEC SHEET
+                        <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Technical Spec Bento Grid -->
+<section class="bg-surface-container-high py-20 px-4 md:px-16">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="md:col-span-2 bg-surface p-10 flex flex-col justify-between">
+<div>
+<h4 class="font-headline font-bold text-2xl mb-4">Material Analysis</h4>
+<p class="text-secondary text-sm">Real-time spectral analysis of alloy composition per batch ensures absolute structural consistency.</p>
+</div>
+<div class="mt-12 overflow-hidden rounded-lg">
+<img alt="Bisel Model Detail" class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0uiPbn_jSaU9PGOgwMEM3OjYK2pBwIh32R6FQ2FaCWrxBjV59ACJWp8_QU6zpmLcLo75oU6H-pr4j71wShlbmiK3RkGRJF83SUr057i6XFltaDL-uc5x1Xkk4vY-mw_k4Sk0HeeZShCqLc9D3ol_HWnZIHlSOwQSkRRrZJBaelu80qkajVVlHyJOFn73PjB9o-AB79tqUf14JpKC_ReXkoFoj5a6Dd9Iu8WXA9r4kozi9v3-T99KzIyE9yY_j4vkDhkff5oNyBrv"/>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-10 flex flex-col justify-between">
+<span class="material-symbols-outlined text-4xl">verified</span>
+<div>
+<h4 class="font-headline font-bold text-2xl mb-2">ISO 9001</h4>
+<p class="text-on-primary/70 text-xs">Certified precision management systems for international aerospace and architectural standards.</p>
+</div>
+</div>
+<div class="bg-on-surface text-surface p-10 flex flex-col justify-between">
+<h4 class="font-headline font-bold text-2xl mb-4">TIG ELITE</h4>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] border-b border-surface/10 pb-1">
+<span>WELD PENETRATION</span>
+<span>MAX</span>
+</div>
+<div class="flex justify-between text-[10px] border-b border-surface/10 pb-1">
+<span>HEAT DISPERSAL</span>
+<span>OPTIMAL</span>
+</div>
+</div>
+<div class="mt-4 opacity-50 text-[10px] uppercase tracking-widest">Structural Integrity Guaranteed</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#fcf9f8]/80 dark:bg-stone-900/80 backdrop-blur-xl border-t border-[#dfbfbd]/15 shadow-[0_-10px_30px_rgba(27,27,27,0.04)] rounded-t-sm">
+<div class="flex flex-col items-center justify-center text-[#a92f32] dark:text-[#ca4748] scale-110">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Models</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#605b77] dark:text-stone-500 hover:text-[#a92f32] active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined" data-icon="straighten">straighten</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Measure</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#605b77] dark:text-stone-500 hover:text-[#a92f32] active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Quotes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#605b77] dark:text-stone-500 hover:text-[#a92f32] active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Settings</span>
+</div>
+</nav>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-12 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<script>
+        (function () {
+            const select = document.getElementById("model-select");
+            const preview = document.getElementById("model-preview");
+            const title = document.getElementById("model-title");
+            const desc = document.getElementById("model-desc");
+            const tag = document.getElementById("model-tag");
+            if (!select || !preview || !title || !desc || !tag) return;
+            const updatePreview = () => {
+                const option = select.options[select.selectedIndex];
+                const img = option.getAttribute("data-img");
+                const titleText = option.getAttribute("data-title") || option.textContent || "Selected model";
+                const descText = option.getAttribute("data-desc") || "";
+                const tagText = (option.getAttribute("data-title") || "").split(" ")[1] || "MODE";
+                preview.classList.remove("opacity-100");
+                preview.classList.add("opacity-0");
+                window.setTimeout(() => {
+                    if (img) {
+                        preview.src = img;
+                        preview.alt = titleText;
+                    }
+                    title.textContent = titleText;
+                    desc.textContent = descText;
+                    tag.textContent = tagText;
+                    preview.classList.remove("opacity-0");
+                    preview.classList.add("opacity-100");
+                }, 220);
+            };
+            select.addEventListener("change", updatePreview);
+            updatePreview();
+        })();
+    </script>
+</body></html>
