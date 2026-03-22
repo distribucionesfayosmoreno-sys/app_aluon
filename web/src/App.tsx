@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Catalog from "./pages/Catalog";
 import Detail from "./pages/Detail";
 import Checkout from "./pages/Checkout";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Catalog />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/checkout" element={<Checkout />} />
         </Route>
