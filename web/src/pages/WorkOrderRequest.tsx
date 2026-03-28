@@ -113,7 +113,7 @@ export default function WorkOrderRequest() {
           <div className="relative h-48 rounded-xl overflow-hidden">
             <img
               alt={selectedModel?.title ?? "Modelo ALUON"}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
               src={selectedModel?.img}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-on-surface/70 via-on-surface/20 to-transparent"></div>

@@ -30,7 +30,7 @@ export default function Catalog() {
         <div className="relative overflow-hidden bg-surface" style={{ paddingBottom: "5rem!important" }}>
           <img
             alt={current.title}
-            className="absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out opacity-100 scale-100"
+            className="absolute inset-0 w-full h-full object-cover object-[center_35%] transition-all duration-500 ease-out opacity-100 scale-100"
             src={current.img}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-on-surface via-on-surface/30 to-transparent"></div>
@@ -80,7 +80,7 @@ export default function Catalog() {
         <div className="bg-surface-container-low">
           <img
             alt={`${current.title} ficha`}
-            className="w-full rounded-[0.5rem] bg-surface/10"
+            className="w-full rounded-[0.5rem] bg-surface/10 object-cover object-[center_40%] max-h-[320px]"
             src={current.panel}
           />
         </div>

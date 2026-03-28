@@ -8,10 +8,10 @@ export type CatalogModel = {
   panel: string;
 };
 
-const classicImg = new URL("../assets/doors/classic.png", import.meta.url).toString();
-const biselImg = new URL("../assets/doors/bisel.png", import.meta.url).toString();
-const inoxImg = new URL("../assets/doors/inox.png", import.meta.url).toString();
-const venecianaImg = new URL("../assets/doors/veneciana.png", import.meta.url).toString();
+const classicImg = new URL("../assets/doors/aluonClassic.jpg", import.meta.url).toString();
+const biselImg = new URL("../assets/doors/aluonBisel.jpg", import.meta.url).toString();
+const inoxImg = new URL("../assets/doors/aluonInox.jpg", import.meta.url).toString();
+const venecianaImg = new URL("../assets/doors/aluonVeneciana.jpg", import.meta.url).toString();
 
 export const catalogModels: CatalogModel[] = [
   {
