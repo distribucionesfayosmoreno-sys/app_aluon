@@ -1,26 +1,39 @@
 import { useState } from "react";
-import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
+import { Mail, MapPin, Phone, Store, User } from "lucide-react";
 
-type RegisterFormState = {
-  name: string;
+type RegistrationFormState = {
+  nombreComercial: string;
+  razonSocial: string;
+  personaContacto: string;
   email: string;
-  password: string;
-  confirmPassword: string;
+  telefonoWhatsapp: string;
+  direccion: string;
+  cp: string;
+  poblacion: string;
+  provincia: string;
+  pais: string;
 };
 
 export default function RegisterPage() {
-  const [form, setForm] = useState<RegisterFormState>({
-    name: "",
+  const [form, setForm] = useState<RegistrationFormState>({
+    nombreComercial: "",
+    razonSocial: "",
+    personaContacto: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    telefonoWhatsapp: "",
+    direccion: "",
+    cp: "",
+    poblacion: "",
+    provincia: "",
+    pais: "España",
   });
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
   const [formError, setFormError] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [registrationId, setRegistrationId] = useState("");
+  const [registrationStatus, setRegistrationStatus] = useState("");
 
   const handleChange =
-    (field: keyof RegisterFormState) =>
+    (field: keyof RegistrationFormState) =>
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setForm((prev) => ({ ...prev, [field]: event.target.value }));
       if (formError) {
@@ -28,27 +41,57 @@ export default function RegisterPage() {
       }
     };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!form.name.trim()) {
-      setFormError("El nombre es obligatorio.");
+    if (!form.nombreComercial.trim()) {
+      setFormError("El nombre comercial es obligatorio.");
       return;
     }
     if (!form.email.trim()) {
       setFormError("El correo electrónico es obligatorio.");
       return;
     }
-    if (form.password.length < 8) {
-      setFormError("La contraseña debe tener al menos 8 caracteres.");
-      return;
-    }
-    if (form.password !== form.confirmPassword) {
-      setFormError("Las contraseñas no coinciden.");
+    if (!form.telefonoWhatsapp.trim()) {
+      setFormError("El teléfono de WhatsApp es obligatorio.");
       return;
     }
 
-    // TODO: Conectar aquí la lógica de registro con email/contraseña.
+    try {
+      setStatus("submitting");
+      const apiBase = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
+      const trimmedBase = apiBase.replace(/\/$/, "");
+      const endpoint = `${trimmedBase}/api/registrations`;
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombreComercial: form.nombreComercial.trim(),
+          razonSocial: form.razonSocial.trim() || null,
+          personaContacto: form.personaContacto.trim() || null,
+          email: form.email.trim(),
+          telefonoWhatsapp: form.telefonoWhatsapp.trim(),
+          direccion: form.direccion.trim() || null,
+          cp: form.cp.trim() || null,
+          poblacion: form.poblacion.trim() || null,
+          provincia: form.provincia.trim() || null,
+          pais: form.pais.trim() || null,
+        }),
+      });
+
+      if (!response.ok) {
+        const message = await response.text();
+        throw new Error(message || "No se pudo enviar la solicitud.");
+      }
+
+      const data = (await response.json()) as { registrationId: string; status: string };
+      setRegistrationId(data.registrationId);
+      setRegistrationStatus(data.status);
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+      setFormError(error instanceof Error ? error.message : "Error inesperado.");
+    }
   };
 
   return (
@@ -68,14 +111,12 @@ export default function RegisterPage() {
         <div className="relative w-full max-w-md rounded-2xl bg-[var(--ag-surface)]/95 p-6 shadow-[0_24px_60px_-45px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8">
           <header className="mb-8 text-center">
             <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-[var(--ag-primary)]/10"></div>
-            <p className="text-xs uppercase tracking-[0.3em] text-secondary">
-              Registro
-            </p>
+            <p className="text-xs uppercase tracking-[0.3em] text-secondary">Registro</p>
             <h1 className="mt-2 text-3xl font-headline font-semibold text-on-surface">
-              Crea tu cuenta
+              Solicitud de acceso
             </h1>
             <p className="mt-2 text-sm text-on-surface/70">
-              Te llevará menos de un minuto.
+              Te confirmaremos el alta en breve.
             </p>
           </header>
 
@@ -87,19 +128,54 @@ export default function RegisterPage() {
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="space-y-2">
-              <label className="sr-only" htmlFor="register-name">
-                Nombre completo
+              <label className="sr-only" htmlFor="register-nombre-comercial">
+                Nombre comercial
+              </label>
+              <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
+                <Store className="h-4 w-4 text-secondary" aria-hidden="true" />
+                <input
+                  id="register-nombre-comercial"
+                  type="text"
+                  value={form.nombreComercial}
+                  onChange={handleChange("nombreComercial")}
+                  placeholder="Nombre comercial"
+                  aria-label="Nombre comercial"
+                  className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="sr-only" htmlFor="register-razon-social">
+                Razón social
+              </label>
+              <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
+                <Store className="h-4 w-4 text-secondary" aria-hidden="true" />
+                <input
+                  id="register-razon-social"
+                  type="text"
+                  value={form.razonSocial}
+                  onChange={handleChange("razonSocial")}
+                  placeholder="Razón social (opcional)"
+                  aria-label="Razón social"
+                  className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="sr-only" htmlFor="register-contact">
+                Persona de contacto
               </label>
               <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
                 <User className="h-4 w-4 text-secondary" aria-hidden="true" />
                 <input
-                  id="register-name"
+                  id="register-contact"
                   type="text"
-                  autoComplete="name"
-                  value={form.name}
-                  onChange={handleChange("name")}
-                  placeholder="Nombre completo"
-                  aria-label="Nombre completo"
+                  value={form.personaContacto}
+                  onChange={handleChange("personaContacto")}
+                  placeholder="Persona de contacto (opcional)"
+                  aria-label="Persona de contacto"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
               </div>
@@ -117,7 +193,7 @@ export default function RegisterPage() {
                   autoComplete="email"
                   value={form.email}
                   onChange={handleChange("email")}
-                  placeholder="Correo electrónico"
+                  placeholder="Email de contacto"
                   aria-label="Correo electrónico"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
@@ -125,77 +201,95 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <label className="sr-only" htmlFor="register-password">
-                Contraseña
+              <label className="sr-only" htmlFor="register-phone">
+                Teléfono WhatsApp
               </label>
               <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
-                <Lock className="h-4 w-4 text-secondary" aria-hidden="true" />
+                <Phone className="h-4 w-4 text-secondary" aria-hidden="true" />
                 <input
-                  id="register-password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  value={form.password}
-                  onChange={handleChange("password")}
-                  placeholder="Contraseña"
-                  aria-label="Contraseña"
+                  id="register-phone"
+                  type="tel"
+                  value={form.telefonoWhatsapp}
+                  onChange={handleChange("telefonoWhatsapp")}
+                  placeholder="+34 600 123 456"
+                  aria-label="Teléfono WhatsApp"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
-                <button
-                  type="button"
-                  className="rounded-full p-1 text-secondary transition hover:text-on-surface"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4" aria-hidden="true" />
-                  ) : (
-                    <Eye className="h-4 w-4" aria-hidden="true" />
-                  )}
-                </button>
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="sr-only" htmlFor="register-confirm-password">
-                Confirmar contraseña
+              <label className="sr-only" htmlFor="register-address">
+                Dirección
               </label>
               <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
-                <Lock className="h-4 w-4 text-secondary" aria-hidden="true" />
+                <MapPin className="h-4 w-4 text-secondary" aria-hidden="true" />
                 <input
-                  id="register-confirm-password"
-                  type={showConfirm ? "text" : "password"}
-                  autoComplete="new-password"
-                  value={form.confirmPassword}
-                  onChange={handleChange("confirmPassword")}
-                  placeholder="Confirma tu contraseña"
-                  aria-label="Confirmar contraseña"
+                  id="register-address"
+                  type="text"
+                  value={form.direccion}
+                  onChange={handleChange("direccion")}
+                  placeholder="Dirección (opcional)"
+                  aria-label="Dirección"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
-                <button
-                  type="button"
-                  className="rounded-full p-1 text-secondary transition hover:text-on-surface"
-                  onClick={() => setShowConfirm((prev) => !prev)}
-                  aria-label={showConfirm ? "Ocultar contraseña" : "Mostrar contraseña"}
-                >
-                  {showConfirm ? (
-                    <EyeOff className="h-4 w-4" aria-hidden="true" />
-                  ) : (
-                    <Eye className="h-4 w-4" aria-hidden="true" />
-                  )}
-                </button>
               </div>
-              <p className="text-xs text-on-surface/60">
-                Usa al menos 8 caracteres con una combinación segura.
-              </p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <input
+                id="register-cp"
+                type="text"
+                value={form.cp}
+                onChange={handleChange("cp")}
+                placeholder="Código postal"
+                aria-label="Código postal"
+                className="w-full rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 text-sm text-on-surface placeholder:text-on-surface/40 focus:border-[var(--ag-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--ag-primary)]/20"
+              />
+              <input
+                id="register-poblacion"
+                type="text"
+                value={form.poblacion}
+                onChange={handleChange("poblacion")}
+                placeholder="Población"
+                aria-label="Población"
+                className="w-full rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 text-sm text-on-surface placeholder:text-on-surface/40 focus:border-[var(--ag-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--ag-primary)]/20"
+              />
+              <input
+                id="register-provincia"
+                type="text"
+                value={form.provincia}
+                onChange={handleChange("provincia")}
+                placeholder="Provincia"
+                aria-label="Provincia"
+                className="w-full rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 text-sm text-on-surface placeholder:text-on-surface/40 focus:border-[var(--ag-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--ag-primary)]/20"
+              />
+              <input
+                id="register-pais"
+                type="text"
+                value={form.pais}
+                onChange={handleChange("pais")}
+                placeholder="País"
+                aria-label="País"
+                className="w-full rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 text-sm text-on-surface placeholder:text-on-surface/40 focus:border-[var(--ag-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--ag-primary)]/20"
+              />
             </div>
 
             <button
               type="submit"
+              disabled={status === "submitting"}
               className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(169,47,50,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
             >
-              Crear cuenta
+              {status === "submitting" ? "Enviando solicitud..." : "Enviar solicitud"}
             </button>
           </form>
+
+          {status === "success" ? (
+            <div className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+              Solicitud registrada. ID: <strong>{registrationId}</strong>. Estado:{" "}
+              <strong>{registrationStatus || "PENDIENTE"}</strong>.
+            </div>
+          ) : null}
 
           <p className="mt-8 text-center text-xs text-on-surface/70">
             ¿Ya tienes cuenta?{" "}

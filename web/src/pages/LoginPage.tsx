@@ -1,35 +1,64 @@
 import { useState } from "react";
-import {
-  Apple,
-  Chrome,
-  Eye,
-  EyeOff,
-  Facebook,
-  Lock,
-  Mail,
-} from "lucide-react";
+import { Apple, Chrome, Facebook, Mail, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 type LoginFormState = {
   email: string;
-  password: string;
+  telefonoWhatsapp: string;
 };
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const [form, setForm] = useState<LoginFormState>({
     email: "",
-    password: "",
+    telefonoWhatsapp: "",
   });
-  const [showPassword, setShowPassword] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange =
     (field: keyof LoginFormState) =>
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setForm((prev) => ({ ...prev, [field]: event.target.value }));
+      if (errorMessage) {
+        setErrorMessage("");
+      }
     };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO: Conectar aquí la lógica de autenticación con email/contraseña.
+    if (!form.email.trim()) {
+      setErrorMessage("El correo electrónico es obligatorio.");
+      return;
+    }
+    if (!form.telefonoWhatsapp.trim()) {
+      setErrorMessage("El teléfono de WhatsApp es obligatorio.");
+      return;
+    }
+
+    try {
+      setStatus("submitting");
+      const apiBase = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
+      const trimmedBase = apiBase.replace(/\/$/, "");
+      const endpoint = `${trimmedBase}/api/auth/login`;
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: form.email.trim(),
+          telefonoWhatsapp: form.telefonoWhatsapp.trim(),
+        }),
+      });
+      if (!response.ok) {
+        const message = await response.text();
+        throw new Error(message || "No se pudo iniciar sesión.");
+      }
+      setStatus("success");
+      navigate("/status");
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Error inesperado.");
+    }
   };
 
   return (
@@ -61,6 +90,12 @@ export default function LoginPage() {
             </p>
           </header>
 
+          {errorMessage ? (
+            <div className="mb-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
+              {errorMessage}
+            </div>
+          ) : null}
+
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label className="sr-only" htmlFor="login-email">
@@ -82,51 +117,38 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-2">
-              <label className="sr-only" htmlFor="login-password">
-                Contraseña
+              <label className="sr-only" htmlFor="login-phone">
+                Teléfono WhatsApp
               </label>
               <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
-                <Lock className="h-4 w-4 text-secondary" aria-hidden="true" />
+                <Phone className="h-4 w-4 text-secondary" aria-hidden="true" />
                 <input
-                  id="login-password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="current-password"
-                  value={form.password}
-                  onChange={handleChange("password")}
-                  placeholder="Contraseña"
-                  aria-label="Contraseña"
+                  id="login-phone"
+                  type="tel"
+                  autoComplete="tel"
+                  value={form.telefonoWhatsapp}
+                  onChange={handleChange("telefonoWhatsapp")}
+                  placeholder="Teléfono WhatsApp"
+                  aria-label="Teléfono WhatsApp"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
-                <button
-                  type="button"
-                  className="rounded-full p-1 text-secondary transition hover:text-on-surface"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  aria-label={
-                    showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
-                  }
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4" aria-hidden="true" />
-                  ) : (
-                    <Eye className="h-4 w-4" aria-hidden="true" />
-                  )}
-                </button>
               </div>
               <div className="text-right">
                 <a
                   href="#"
                   className="text-xs font-medium text-[var(--ag-primary)] hover:text-[var(--ag-primary)]/80"
                 >
-                  ¿Olvidaste tu contraseña?
+                  ¿Necesitas ayuda?
                 </a>
               </div>
             </div>
 
             <button
               type="submit"
+              disabled={status === "submitting"}
               className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(169,47,50,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
             >
-              Iniciar sesión
+              {status === "submitting" ? "Accediendo..." : "Iniciar sesión"}
             </button>
           </form>
 
