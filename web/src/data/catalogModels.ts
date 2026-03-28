@@ -8,8 +8,16 @@ export type CatalogModel = {
   panel: string;
 };
 
-const baseUrl = import.meta.env.BASE_URL ?? "/";
-const imgBase = `${baseUrl.replace(/\\/$/, "")}/img`;
+const resolveImgBase = () => {
+  if (typeof document !== "undefined") {
+    const base = new URL("img/", document.baseURI).toString();
+    return base.replace(/\\/$/, "");
+  }
+  const baseUrl = import.meta.env.BASE_URL ?? "/";
+  return `${baseUrl.replace(/\\/$/, "")}/img`;
+};
+
+const imgBase = resolveImgBase();
 
 export const catalogModels: CatalogModel[] = [
   {
