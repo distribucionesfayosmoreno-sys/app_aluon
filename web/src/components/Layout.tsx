@@ -1,5 +1,18 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 
+type NavItem = {
+  to: string;
+  label: string;
+};
+
+const navItems: NavItem[] = [
+  { to: "/", label: "Modelos" },
+  { to: "/detail", label: "Medidas" },
+  { to: "/checkout", label: "Enviar" },
+  { to: "/requests", label: "Bandeja" },
+  { to: "/status", label: "Estado" },
+];
+
 function NavLink({ to, children }) {
   const location = useLocation();
   const isActive = location.pathname === to;
@@ -11,6 +24,28 @@ function NavLink({ to, children }) {
       }`}
     >
       {children}
+    </Link>
+  );
+}
+
+function MobileTabLink({ to, label }: { to: string; label: string }) {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+  return (
+    <Link
+      to={to}
+      aria-current={isActive ? "page" : undefined}
+      className="relative flex items-center justify-center px-3 py-2 text-[11px] uppercase tracking-[0.25em] font-bold whitespace-nowrap transition-colors"
+      style={{ color: isActive ? "#a92f32" : "#7b7788" }}
+    >
+      <span>{label}</span>
+      <span
+        className="absolute left-3 right-3 -bottom-[1px] h-[2px] rounded-full transition-opacity"
+        style={{
+          backgroundColor: "#a92f32",
+          opacity: isActive ? 1 : 0,
+        }}
+      />
     </Link>
   );
 }
@@ -37,42 +72,17 @@ export default function Layout() {
         </div>
       </header>
 
-      <main className="pt-16 pb-24 md:pb-0">
+      <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-[#fcf9f8]/95 backdrop-blur-xl border-b border-[#dfbfbd]/40">
+        <div className="flex items-center gap-3 px-4 h-12 overflow-x-auto">
+          {navItems.map((item) => (
+            <MobileTabLink key={item.to} to={item.to} label={item.label} />
+          ))}
+        </div>
+      </div>
+
+      <main className="pt-28 md:pt-16 pb-10 md:pb-0">
         <Outlet />
       </main>
-
-      <nav className="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-[#fcf9f8]/80 backdrop-blur-xl border-t border-[#dfbfbd]/15 shadow-[0_-10px_30px_rgba(27,27,27,0.04)] rounded-t-sm">
-        <NavLink to="/">
-          <div className="flex flex-col items-center justify-center">
-            <span className="material-symbols-outlined" data-icon="grid_view">grid_view</span>
-            <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Modelos</span>
-          </div>
-        </NavLink>
-        <NavLink to="/detail">
-          <div className="flex flex-col items-center justify-center">
-            <span className="material-symbols-outlined" data-icon="straighten">straighten</span>
-            <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Medidas</span>
-          </div>
-        </NavLink>
-        <NavLink to="/checkout">
-          <div className="flex flex-col items-center justify-center">
-            <span className="material-symbols-outlined" data-icon="request_quote">request_quote</span>
-            <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Enviar</span>
-          </div>
-        </NavLink>
-        <NavLink to="/requests">
-          <div className="flex flex-col items-center justify-center">
-            <span className="material-symbols-outlined" data-icon="inbox">inbox</span>
-            <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Bandeja</span>
-          </div>
-        </NavLink>
-        <NavLink to="/status">
-          <div className="flex flex-col items-center justify-center">
-            <span className="material-symbols-outlined" data-icon="list_alt">list_alt</span>
-            <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Estado</span>
-          </div>
-        </NavLink>
-      </nav>
 
     </div>
   );
