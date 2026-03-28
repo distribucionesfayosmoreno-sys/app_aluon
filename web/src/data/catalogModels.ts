@@ -8,14 +8,14 @@ export type CatalogModel = {
   panel: string;
 };
 
-const classicImg = new URL("../assets/doors/aluonClassic.jpg", import.meta.url).toString();
-const biselImg = new URL("../assets/doors/aluonBisel.jpg", import.meta.url).toString();
-const inoxImg = new URL("../assets/doors/aluonInox.jpg", import.meta.url).toString();
-const venecianaImg = new URL("../assets/doors/aluonVeneciana.jpg", import.meta.url).toString();
-const classicPanel = new URL("../assets/doors/panels/classic.png", import.meta.url).toString();
-const biselPanel = new URL("../assets/doors/panels/bisel.png", import.meta.url).toString();
-const inoxPanel = new URL("../assets/doors/panels/inox.png", import.meta.url).toString();
-const venecianaPanel = new URL("../assets/doors/panels/veneciana.png", import.meta.url).toString();
+const classicImg = new URL("../assets/doors/aluonClassic.webp", import.meta.url).toString();
+const biselImg = new URL("../assets/doors/aluonBisel.webp", import.meta.url).toString();
+const inoxImg = new URL("../assets/doors/aluonInox.webp", import.meta.url).toString();
+const venecianaImg = new URL("../assets/doors/aluonVeneciana.webp", import.meta.url).toString();
+const classicPanel = new URL("../assets/doors/panels/classic.webp", import.meta.url).toString();
+const biselPanel = new URL("../assets/doors/panels/bisel.webp", import.meta.url).toString();
+const inoxPanel = new URL("../assets/doors/panels/inox.webp", import.meta.url).toString();
+const venecianaPanel = new URL("../assets/doors/panels/veneciana.webp", import.meta.url).toString();
 
 export const catalogModels: CatalogModel[] = [
   {
