@@ -12,6 +12,10 @@ const classicImg = new URL("../assets/doors/aluonClassic.jpg", import.meta.url).
 const biselImg = new URL("../assets/doors/aluonBisel.jpg", import.meta.url).toString();
 const inoxImg = new URL("../assets/doors/aluonInox.jpg", import.meta.url).toString();
 const venecianaImg = new URL("../assets/doors/aluonVeneciana.jpg", import.meta.url).toString();
+const classicPanel = new URL("../assets/doors/panels/classic.png", import.meta.url).toString();
+const biselPanel = new URL("../assets/doors/panels/bisel.png", import.meta.url).toString();
+const inoxPanel = new URL("../assets/doors/panels/inox.png", import.meta.url).toString();
+const venecianaPanel = new URL("../assets/doors/panels/veneciana.png", import.meta.url).toString();
 
 export const catalogModels: CatalogModel[] = [
   {
@@ -21,7 +25,7 @@ export const catalogModels: CatalogModel[] = [
     tag: "FOUNDATION",
     desc: "Proven durability and timeless industrial design for standard architectural builds.",
     img: classicImg,
-    panel: classicImg,
+    panel: classicPanel,
   },
   {
     id: "bisel",
@@ -30,7 +34,7 @@ export const catalogModels: CatalogModel[] = [
     tag: "PRECISION EDGE",
     desc: "Sophisticated beveled edges providing refined shadow lines and depth.",
     img: biselImg,
-    panel: biselImg,
+    panel: biselPanel,
   },
   {
     id: "inox",
@@ -39,7 +43,7 @@ export const catalogModels: CatalogModel[] = [
     tag: "HYBRID CORE",
     desc: "Integrating stainless steel accents for enhanced structural integrity and aesthetics.",
     img: inoxImg,
-    panel: inoxImg,
+    panel: inoxPanel,
   },
   {
     id: "veneciana",
@@ -48,6 +52,6 @@ export const catalogModels: CatalogModel[] = [
     tag: "DYNAMIC FLOW",
     desc: "Adjustable slat technology for light control and modern ventilation.",
     img: venecianaImg,
-    panel: venecianaImg,
+    panel: venecianaPanel,
   },
 ];
