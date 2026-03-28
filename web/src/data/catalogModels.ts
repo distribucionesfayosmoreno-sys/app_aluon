@@ -8,16 +8,10 @@ export type CatalogModel = {
   panel: string;
 };
 
-const resolveImgBase = () => {
-  if (typeof document !== "undefined") {
-    const base = new URL("img/", document.baseURI).toString();
-    return base.replace(/\\/$/, "");
-  }
-  const baseUrl = import.meta.env.BASE_URL ?? "/";
-  return `${baseUrl.replace(/\\/$/, "")}/img`;
-};
-
-const imgBase = resolveImgBase();
+const classicImg = new URL("../assets/doors/classic.png", import.meta.url).toString();
+const biselImg = new URL("../assets/doors/bisel.png", import.meta.url).toString();
+const inoxImg = new URL("../assets/doors/inox.png", import.meta.url).toString();
+const venecianaImg = new URL("../assets/doors/veneciana.png", import.meta.url).toString();
 
 export const catalogModels: CatalogModel[] = [
   {
@@ -26,8 +20,8 @@ export const catalogModels: CatalogModel[] = [
     title: "ALUON CLASSIC",
     tag: "FOUNDATION",
     desc: "Proven durability and timeless industrial design for standard architectural builds.",
-    img: `${imgBase}/classic.png`,
-    panel: `${imgBase}/classic.png`,
+    img: classicImg,
+    panel: classicImg,
   },
   {
     id: "bisel",
@@ -35,8 +29,8 @@ export const catalogModels: CatalogModel[] = [
     title: "ALUON BISEL",
     tag: "PRECISION EDGE",
     desc: "Sophisticated beveled edges providing refined shadow lines and depth.",
-    img: `${imgBase}/bisel.png`,
-    panel: `${imgBase}/bisel.png`,
+    img: biselImg,
+    panel: biselImg,
   },
   {
     id: "inox",
@@ -44,8 +38,8 @@ export const catalogModels: CatalogModel[] = [
     title: "ALUON INOX",
     tag: "HYBRID CORE",
     desc: "Integrating stainless steel accents for enhanced structural integrity and aesthetics.",
-    img: `${imgBase}/inox.png`,
-    panel: `${imgBase}/inox.png`,
+    img: inoxImg,
+    panel: inoxImg,
   },
   {
     id: "veneciana",
@@ -53,7 +47,7 @@ export const catalogModels: CatalogModel[] = [
     title: "ALUON VENECIANA",
     tag: "DYNAMIC FLOW",
     desc: "Adjustable slat technology for light control and modern ventilation.",
-    img: `${imgBase}/veneciana.png`,
-    panel: `${imgBase}/veneciana.png`,
+    img: venecianaImg,
+    panel: venecianaImg,
   },
 ];
