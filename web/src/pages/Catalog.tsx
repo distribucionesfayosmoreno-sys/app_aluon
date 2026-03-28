@@ -80,7 +80,7 @@ export default function Catalog() {
         <div className="bg-surface-container-low">
           <img
             alt={`${current.title} ficha`}
-            className="w-full rounded-[0.5rem] bg-surface/10 object-cover object-[center_40%] max-h-[320px]"
+            className="w-full rounded-[0.5rem] bg-surface/10"
             src={current.panel}
           />
         </div>
