@@ -63,7 +63,10 @@ export default function WorkOrderRequest() {
 
     try {
       setStatus("submitting");
-      const response = await fetch("/api/orders/requests", {
+      const apiBase = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
+      const trimmedBase = apiBase.replace(/\/$/, "");
+      const endpoint = `${trimmedBase}/api/orders/requests`;
+      const response = await fetch(endpoint, {
         method: "POST",
         body: payload,
       });
