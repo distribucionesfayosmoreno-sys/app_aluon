@@ -30,6 +30,7 @@ export default function Layout() {
             <NavLink to="/">Catálogo</NavLink>
             <NavLink to="/detail">Detalle</NavLink>
             <NavLink to="/checkout">Carrito/Checkout</NavLink>
+            <NavLink to="/requests">Bandeja</NavLink>
           </nav>
           <span className="material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200">account_circle</span>
         </div>
@@ -56,6 +57,12 @@ export default function Layout() {
           <div className="flex flex-col items-center justify-center">
             <span className="material-symbols-outlined" data-icon="request_quote">request_quote</span>
             <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Enviar</span>
+          </div>
+        </NavLink>
+        <NavLink to="/requests">
+          <div className="flex flex-col items-center justify-center">
+            <span className="material-symbols-outlined" data-icon="inbox">inbox</span>
+            <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Bandeja</span>
           </div>
         </NavLink>
       </nav>

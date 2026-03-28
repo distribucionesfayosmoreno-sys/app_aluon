@@ -5,6 +5,7 @@ import Detail from "./pages/Detail";
 import Checkout from "./pages/Checkout";
 import LoginPage from "./pages/LoginPage";
 import WorkOrderRequest from "./pages/WorkOrderRequest";
+import RequestsInbox from "./pages/RequestsInbox";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/detail" element={<Detail />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/request" element={<WorkOrderRequest />} />
+          <Route path="/requests" element={<RequestsInbox />} />
         </Route>
       </Routes>
     </BrowserRouter>
