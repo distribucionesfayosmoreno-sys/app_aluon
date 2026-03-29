@@ -5,6 +5,7 @@ import Detail from "./pages/Detail";
 import Checkout from "./pages/Checkout";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import WorkOrderRequest from "./pages/WorkOrderRequest";
 import RequestsInbox from "./pages/RequestsInbox";
 import ClientStatus from "./pages/ClientStatus";
@@ -18,6 +19,7 @@ function App() {
         {/* Public routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
         {/* Protected app */}
         <Route

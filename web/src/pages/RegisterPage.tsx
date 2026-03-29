@@ -8,6 +8,7 @@ type RegistrationFormState = {
   email: string;
   telefonoWhatsapp: string;
   password: string;
+  confirmPassword: string;
   direccion: string;
   cp: string;
   poblacion: string;
@@ -23,6 +24,7 @@ export default function RegisterPage() {
     email: "",
     telefonoWhatsapp: "",
     password: "",
+    confirmPassword: "",
     direccion: "",
     cp: "",
     poblacion: "",
@@ -64,6 +66,10 @@ export default function RegisterPage() {
     }
     if (form.password.trim().length < 8) {
       setFormError("La contraseña debe tener al menos 8 caracteres.");
+      return;
+    }
+    if (form.password.trim() !== form.confirmPassword.trim()) {
+      setFormError("Las contraseñas no coinciden.");
       return;
     }
 
@@ -250,6 +256,25 @@ export default function RegisterPage() {
                   onChange={handleChange("password")}
                   placeholder="Contraseña (mín. 8 caracteres)"
                   aria-label="Contraseña"
+                  className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="sr-only" htmlFor="register-confirm-password">
+                Confirmar contraseña
+              </label>
+              <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
+                <Key className="h-4 w-4 text-secondary" aria-hidden="true" />
+                <input
+                  id="register-confirm-password"
+                  type="password"
+                  autoComplete="new-password"
+                  value={form.confirmPassword}
+                  onChange={handleChange("confirmPassword")}
+                  placeholder="Repite la contraseña"
+                  aria-label="Confirmar contraseña"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
               </div>

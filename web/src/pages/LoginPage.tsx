@@ -147,10 +147,10 @@ export default function LoginPage() {
               </div>
               <div className="text-right">
                 <a
-                  href="#"
+                  href="/forgot-password"
                   className="text-xs font-medium text-[var(--ag-primary)] hover:text-[var(--ag-primary)]/80"
                 >
-                  ¿Necesitas ayuda?
+                  ¿Olvidaste tu contraseña?
                 </a>
               </div>
             </div>
