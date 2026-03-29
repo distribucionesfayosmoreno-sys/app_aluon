@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Apple, Chrome, Facebook, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setAuth } from "../utils/auth";
 
@@ -156,48 +156,6 @@ export default function LoginPage() {
               {status === "submitting" ? "Accediendo..." : "Iniciar sesión"}
             </button>
           </form>
-
-          <div className="my-6 flex items-center gap-4 text-xs text-on-surface/60">
-            <span className="h-px flex-1 bg-outline-variant/60"></span>
-            <span>O continúa con</span>
-            <span className="h-px flex-1 bg-outline-variant/60"></span>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-3">
-            <button
-              type="button"
-              className="flex items-center justify-center gap-2 rounded-xl border border-outline-variant/70 bg-surface-container-low py-2 text-xs font-semibold text-on-surface transition hover:border-[var(--ag-primary)]/60"
-              aria-label="Iniciar sesión con Google"
-              onClick={() => {
-                // TODO: Conectar autenticación con Google.
-              }}
-            >
-              <Chrome className="h-4 w-4" aria-hidden="true" />
-              Google
-            </button>
-            <button
-              type="button"
-              className="flex items-center justify-center gap-2 rounded-xl border border-outline-variant/70 bg-surface-container-low py-2 text-xs font-semibold text-on-surface transition hover:border-[var(--ag-primary)]/60"
-              aria-label="Iniciar sesión con Apple"
-              onClick={() => {
-                // TODO: Conectar autenticación con Apple.
-              }}
-            >
-              <Apple className="h-4 w-4" aria-hidden="true" />
-              Apple
-            </button>
-            <button
-              type="button"
-              className="flex items-center justify-center gap-2 rounded-xl border border-outline-variant/70 bg-surface-container-low py-2 text-xs font-semibold text-on-surface transition hover:border-[var(--ag-primary)]/60"
-              aria-label="Iniciar sesión con Facebook"
-              onClick={() => {
-                // TODO: Conectar autenticación con Facebook.
-              }}
-            >
-              <Facebook className="h-4 w-4" aria-hidden="true" />
-              Facebook
-            </button>
-          </div>
 
           <p className="mt-8 text-center text-xs text-on-surface/70">
             ¿No tienes cuenta?{" "}
