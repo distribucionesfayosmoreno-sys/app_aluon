@@ -30,6 +30,27 @@ const statusLabels: Record<string, string> = {
   FACTURADA: "Facturada",
 };
 
+const normalizeWorkflowStep = (value: string): OrderWorkflowStep => {
+  switch (value) {
+    case "BANDEJA":
+      return "INBOX";
+    case "SOLICITUD":
+      return "REQUEST";
+    case "PRESUPUESTO":
+      return "BUDGET";
+    case "VALIDACION":
+      return "VALIDATION";
+    case "DESARROLLO":
+      return "DEV";
+    case "PRODUCCION":
+      return "PROD";
+    case "FINALIZACION":
+      return "FINAL";
+    default:
+      return value as OrderWorkflowStep;
+  }
+};
+
 export default function ClientStatus() {
   const [orders, setOrders] = useState<OrderStatusDto[]>([]);
   const [state, setState] = useState<LoadState>("idle");
@@ -49,7 +70,11 @@ export default function ClientStatus() {
         throw new Error(message || "No se pudo cargar el estado.");
       }
       const data = (await response.json()) as OrderStatusDto[];
-      setOrders(data);
+      const normalized = data.map((order) => ({
+        ...order,
+        workflowStep: normalizeWorkflowStep(order.workflowStep),
+      }));
+      setOrders(normalized);
       setState("success");
       setLastUpdated(new Date());
     } catch (err) {
