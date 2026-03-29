@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Apple, Chrome, Facebook, Mail, Phone } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { setAuth } from "../utils/auth";
 
 type LoginFormState = {
   email: string;
@@ -9,6 +10,7 @@ type LoginFormState = {
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [form, setForm] = useState<LoginFormState>({
     email: "",
     telefonoWhatsapp: "",
@@ -53,8 +55,11 @@ export default function LoginPage() {
         const message = await response.text();
         throw new Error(message || "No se pudo iniciar sesión.");
       }
+      const payload = (await response.json()) as Record<string, unknown>;
+      setAuth(payload);
       setStatus("success");
-      navigate("/status");
+      const fromPath = (location.state as { from?: Location })?.from?.pathname ?? "/status";
+      navigate(fromPath, { replace: true });
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Error inesperado.");

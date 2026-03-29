@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import WorkOrderRequest from "./pages/WorkOrderRequest";
 import RequestsInbox from "./pages/RequestsInbox";
 import ClientStatus from "./pages/ClientStatus";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -18,10 +19,38 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/detail" element={<Detail />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/request" element={<WorkOrderRequest />} />
-          <Route path="/requests" element={<RequestsInbox />} />
-          <Route path="/status" element={<ClientStatus />} />
+          <Route
+            path="/checkout"
+            element={
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/request"
+            element={
+              <ProtectedRoute>
+                <WorkOrderRequest />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/requests"
+            element={
+              <ProtectedRoute>
+                <RequestsInbox />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/status"
+            element={
+              <ProtectedRoute>
+                <ClientStatus />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>
