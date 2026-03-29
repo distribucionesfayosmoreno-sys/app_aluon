@@ -162,9 +162,6 @@ export default function ClientStatus() {
                           {stepLabels[order.workflowStep]}
                         </div>
                       </div>
-                      <span className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary rounded-full whitespace-nowrap">
-                        {statusLabels[order.estado] ?? order.estado.split("_").join(" ")}
-                      </span>
                     </div>
                   ))}
                 </div>
@@ -194,9 +191,6 @@ export default function ClientStatus() {
                           {stepLabels[order.workflowStep]}
                         </div>
                       </div>
-                      <span className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary rounded-full whitespace-nowrap">
-                        {statusLabels[order.estado] ?? order.estado.split("_").join(" ")}
-                      </span>
                     </div>
                   ))}
                 </div>

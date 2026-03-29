@@ -195,7 +195,6 @@ export default function WorkOrderRequest() {
               {status === "submitting" ? "Enviando..." : "Enviar solicitud"}
               <span className="material-symbols-outlined text-sm">send</span>
             </button>
-            <span className="text-xs text-secondary">Los datos se enviarán al módulo de órdenes de trabajo.</span>
           </div>
         </form>
       </div>
