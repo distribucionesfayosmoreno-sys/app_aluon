@@ -59,7 +59,6 @@ export default function Layout() {
     <div className="min-h-screen bg-surface text-on-surface">
       <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#fcf9f8]">
         <div className="flex items-center gap-4">
-          <span className="material-symbols-outlined text-[#a92f32] cursor-pointer active:scale-95 duration-200">menu</span>
           <h1 className="text-xl font-black tracking-[-0.02em] text-[#1b1b1b] font-headline">
             <img alt="ALUON" className="h-6 md:h-7 w-auto" src="/assets/logo.png" />
           </h1>
