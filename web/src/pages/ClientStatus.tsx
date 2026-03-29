@@ -162,22 +162,20 @@ export default function ClientStatus() {
                   </a>
                 </div>
               ) : (
-                <div className="space-y-3">
+                <div className="divide-y divide-outline-variant/20">
                   {requestOrders.map((order) => (
-                    <div
-                      key={order.id}
-                      className="flex flex-wrap items-center justify-between gap-4 border border-outline-variant/30 rounded-lg px-4 py-3"
-                    >
-                      <div>
-                        <div className="text-xs uppercase tracking-[0.2em] text-secondary font-bold">
+                    <div key={order.id} className="flex items-center justify-between gap-4 py-3">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-secondary font-bold">
+                          <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
                           {order.codigoOrden}
                         </div>
-                        <div className="font-headline font-bold text-lg">{order.customerName}</div>
+                        <div className="font-headline font-bold text-lg truncate">{order.customerName}</div>
+                        <div className="text-xs text-secondary uppercase tracking-[0.2em] mt-1">
+                          {stepLabels[order.workflowStep]}
+                        </div>
                       </div>
-                      <div className="text-xs uppercase tracking-[0.2em] text-secondary font-bold">
-                        {stepLabels[order.workflowStep]}
-                      </div>
-                      <span className="inline-flex items-center px-2 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary">
+                      <span className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary rounded-full whitespace-nowrap">
                         {statusLabels[order.estado] ?? order.estado.replaceAll("_", " ")}
                       </span>
                     </div>
@@ -197,22 +195,20 @@ export default function ClientStatus() {
                   Aún no hay presupuestos en curso.
                 </div>
               ) : (
-                <div className="space-y-3">
+                <div className="divide-y divide-outline-variant/20">
                   {budgetOrders.map((order) => (
-                    <div
-                      key={order.id}
-                      className="flex flex-wrap items-center justify-between gap-4 border border-outline-variant/30 rounded-lg px-4 py-3"
-                    >
-                      <div>
-                        <div className="text-xs uppercase tracking-[0.2em] text-secondary font-bold">
+                    <div key={order.id} className="flex items-center justify-between gap-4 py-3">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-secondary font-bold">
+                          <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
                           {order.codigoOrden}
                         </div>
-                        <div className="font-headline font-bold text-lg">{order.customerName}</div>
+                        <div className="font-headline font-bold text-lg truncate">{order.customerName}</div>
+                        <div className="text-xs text-secondary uppercase tracking-[0.2em] mt-1">
+                          {stepLabels[order.workflowStep]}
+                        </div>
                       </div>
-                      <div className="text-xs uppercase tracking-[0.2em] text-secondary font-bold">
-                        {stepLabels[order.workflowStep]}
-                      </div>
-                      <span className="inline-flex items-center px-2 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary">
+                      <span className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary rounded-full whitespace-nowrap">
                         {statusLabels[order.estado] ?? order.estado.replaceAll("_", " ")}
                       </span>
                     </div>
