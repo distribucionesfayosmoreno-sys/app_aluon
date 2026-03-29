@@ -109,7 +109,6 @@ export default function ClientStatus() {
       <div className="max-w-5xl mx-auto space-y-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <div className="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-2">Cliente · Seguimiento</div>
             <h2 className="font-headline font-bold text-3xl md:text-4xl">
               Estado de solicitudes y presupuestos
             </h2>
@@ -118,12 +117,6 @@ export default function ClientStatus() {
               asesor antes de la validación.
             </p>
           </div>
-          {lastUpdated ? (
-            <div className="text-xs text-secondary">
-              Última actualización:{" "}
-              {lastUpdated.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}
-            </div>
-          ) : null}
         </div>
 
         {state === "loading" && (
