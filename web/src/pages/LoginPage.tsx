@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Mail, Phone } from "lucide-react";
+import { Lock, Mail } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setAuth } from "../utils/auth";
 
 type LoginFormState = {
   email: string;
-  telefonoWhatsapp: string;
+  password: string;
 };
 
 export default function LoginPage() {
@@ -13,7 +13,7 @@ export default function LoginPage() {
   const location = useLocation();
   const [form, setForm] = useState<LoginFormState>({
     email: "",
-    telefonoWhatsapp: "",
+    password: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -33,8 +33,8 @@ export default function LoginPage() {
       setErrorMessage("El correo electrónico es obligatorio.");
       return;
     }
-    if (!form.telefonoWhatsapp.trim()) {
-      setErrorMessage("El teléfono de WhatsApp es obligatorio.");
+    if (!form.password.trim()) {
+      setErrorMessage("La contraseña es obligatoria.");
       return;
     }
 
@@ -48,7 +48,7 @@ export default function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: form.email.trim(),
-          telefonoWhatsapp: form.telefonoWhatsapp.trim(),
+          password: form.password.trim(),
         }),
       });
       if (!response.ok) {
@@ -129,19 +129,19 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-2">
-              <label className="sr-only" htmlFor="login-phone">
-                Teléfono WhatsApp
+              <label className="sr-only" htmlFor="login-password">
+                Contraseña
               </label>
               <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
-                <Phone className="h-4 w-4 text-secondary" aria-hidden="true" />
+                <Lock className="h-4 w-4 text-secondary" aria-hidden="true" />
                 <input
-                  id="login-phone"
-                  type="tel"
-                  autoComplete="tel"
-                  value={form.telefonoWhatsapp}
-                  onChange={handleChange("telefonoWhatsapp")}
-                  placeholder="Teléfono WhatsApp"
-                  aria-label="Teléfono WhatsApp"
+                  id="login-password"
+                  type="password"
+                  autoComplete="current-password"
+                  value={form.password}
+                  onChange={handleChange("password")}
+                  placeholder="Contraseña"
+                  aria-label="Contraseña"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
               </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, MapPin, Phone, Store, User } from "lucide-react";
+import { Key, Mail, MapPin, Phone, Store, User } from "lucide-react";
 
 type RegistrationFormState = {
   nombreComercial: string;
@@ -7,6 +7,7 @@ type RegistrationFormState = {
   personaContacto: string;
   email: string;
   telefonoWhatsapp: string;
+  password: string;
   direccion: string;
   cp: string;
   poblacion: string;
@@ -21,6 +22,7 @@ export default function RegisterPage() {
     personaContacto: "",
     email: "",
     telefonoWhatsapp: "",
+    password: "",
     direccion: "",
     cp: "",
     poblacion: "",
@@ -56,6 +58,14 @@ export default function RegisterPage() {
       setFormError("El teléfono de WhatsApp es obligatorio.");
       return;
     }
+    if (!form.password.trim()) {
+      setFormError("La contraseña es obligatoria.");
+      return;
+    }
+    if (form.password.trim().length < 8) {
+      setFormError("La contraseña debe tener al menos 8 caracteres.");
+      return;
+    }
 
     try {
       setStatus("submitting");
@@ -71,6 +81,7 @@ export default function RegisterPage() {
           personaContacto: form.personaContacto.trim() || null,
           email: form.email.trim(),
           telefonoWhatsapp: form.telefonoWhatsapp.trim(),
+          password: form.password.trim(),
           direccion: form.direccion.trim() || null,
           cp: form.cp.trim() || null,
           poblacion: form.poblacion.trim() || null,
@@ -220,6 +231,25 @@ export default function RegisterPage() {
                   onChange={handleChange("telefonoWhatsapp")}
                   placeholder="+34 600 123 456"
                   aria-label="Teléfono WhatsApp"
+                  className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="sr-only" htmlFor="register-password">
+                Contraseña
+              </label>
+              <div className="flex items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-low px-4 py-3 focus-within:border-[var(--ag-primary)] focus-within:ring-2 focus-within:ring-[var(--ag-primary)]/20">
+                <Key className="h-4 w-4 text-secondary" aria-hidden="true" />
+                <input
+                  id="register-password"
+                  type="password"
+                  autoComplete="new-password"
+                  value={form.password}
+                  onChange={handleChange("password")}
+                  placeholder="Contraseña (mín. 8 caracteres)"
+                  aria-label="Contraseña"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
               </div>
