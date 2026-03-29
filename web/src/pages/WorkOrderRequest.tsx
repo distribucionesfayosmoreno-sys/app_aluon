@@ -2,6 +2,7 @@ import { useMemo, useState, type FormEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { catalogModels } from "../data/catalogModels";
 import type { WorkOrderRequestResponse } from "../types/workOrder";
+import { getAuth } from "../utils/auth";
 
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
@@ -28,6 +29,13 @@ export default function WorkOrderRequest() {
     setErrorMessage("");
 
     const normalizedModel = selectedModel?.label ?? "ALUON";
+    const auth = getAuth();
+    const customerId = auth?.customerId;
+
+    if (!customerId) {
+      setErrorMessage("No se pudo identificar tu cuenta. Vuelve a iniciar sesión.");
+      return;
+    }
     const parsedWidth = Number(widthMm);
     const parsedHeight = Number(heightMm);
 
@@ -41,6 +49,9 @@ export default function WorkOrderRequest() {
     }
 
     const payload = new FormData();
+    if (customerId) {
+      payload.append("customerId", customerId);
+    }
     payload.append("modeloPuerta", normalizedModel);
     payload.append("anchoMm", String(parsedWidth));
     payload.append("altoMm", String(parsedHeight));
