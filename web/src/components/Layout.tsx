@@ -1,5 +1,5 @@
-import { Outlet, Link, useLocation, Navigate } from "react-router-dom";
-import { isAuthenticated } from "../utils/auth";
+import { Outlet, Link, useLocation, Navigate, useNavigate } from "react-router-dom";
+import { clearAuth, isAuthenticated } from "../utils/auth";
 
 type NavItem = {
   to: string;
@@ -49,9 +49,15 @@ function MobileTabLink({ to, label }: { to: string; label: string }) {
 }
 
 export default function Layout() {
+  const navigate = useNavigate();
   if (!isAuthenticated()) {
     return <Navigate to="/login" replace />;
   }
+  const handleLogout = () => {
+    if (!window.confirm("¿Quieres cerrar sesión?")) return;
+    clearAuth();
+    navigate("/login", { replace: true });
+  };
   return (
     <div className="min-h-screen bg-surface text-on-surface">
       <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#fcf9f8]">
@@ -65,7 +71,15 @@ export default function Layout() {
             <NavLink to="/">Catálogo</NavLink>
             <NavLink to="/status">Estado</NavLink>
           </nav>
-          <span className="material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200">account_circle</span>
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200"
+            aria-label="Cerrar sesión"
+            title="Cerrar sesión"
+          >
+            account_circle
+          </button>
         </div>
       </header>
 
