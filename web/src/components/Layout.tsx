@@ -1,4 +1,5 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, Navigate } from "react-router-dom";
+import { isAuthenticated } from "../utils/auth";
 
 type NavItem = {
   to: string;
@@ -51,6 +52,9 @@ function MobileTabLink({ to, label }: { to: string; label: string }) {
 }
 
 export default function Layout() {
+  if (!isAuthenticated()) {
+    return <Navigate to="/login" replace />;
+  }
   return (
     <div className="min-h-screen bg-surface text-on-surface">
       <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#fcf9f8]">
