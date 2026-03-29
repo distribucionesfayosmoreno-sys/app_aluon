@@ -109,6 +109,13 @@ export default function RegisterPage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-surface-container-low via-background to-surface-container-low"></div>
 
         <div className="relative w-full max-w-md rounded-2xl bg-[var(--ag-surface)]/95 p-6 shadow-[0_24px_60px_-45px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8">
+          <div className="mb-6 flex justify-center">
+            <img
+              alt="ALUON"
+              src="/assets/logo.png"
+              className="h-16 w-auto"
+            />
+          </div>
           <header className="mb-8 text-center">
             <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-[var(--ag-primary)]/10"></div>
             <p className="text-xs uppercase tracking-[0.3em] text-secondary">Registro</p>
