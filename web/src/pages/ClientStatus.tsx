@@ -158,7 +158,6 @@ export default function ClientStatus() {
                           <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
                           {order.codigoOrden}
                         </div>
-                        <div className="font-headline font-bold text-lg truncate">{order.customerName}</div>
                         <div className="text-xs text-secondary uppercase tracking-[0.2em] mt-1">
                           {stepLabels[order.workflowStep]}
                         </div>
@@ -191,7 +190,6 @@ export default function ClientStatus() {
                           <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
                           {order.codigoOrden}
                         </div>
-                        <div className="font-headline font-bold text-lg truncate">{order.customerName}</div>
                         <div className="text-xs text-secondary uppercase tracking-[0.2em] mt-1">
                           {stepLabels[order.workflowStep]}
                         </div>
