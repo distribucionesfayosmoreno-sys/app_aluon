@@ -8,9 +8,6 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { to: "/", label: "Modelos" },
-  { to: "/detail", label: "Medidas" },
-  { to: "/checkout", label: "Enviar" },
-  { to: "/requests", label: "Bandeja" },
   { to: "/status", label: "Estado" },
 ];
 
@@ -66,9 +63,6 @@ export default function Layout() {
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex gap-8 items-center">
             <NavLink to="/">Catálogo</NavLink>
-            <NavLink to="/detail">Detalle</NavLink>
-            <NavLink to="/checkout">Carrito/Checkout</NavLink>
-            <NavLink to="/requests">Bandeja</NavLink>
             <NavLink to="/status">Estado</NavLink>
           </nav>
           <span className="material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200">account_circle</span>

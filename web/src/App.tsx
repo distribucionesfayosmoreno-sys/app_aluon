@@ -1,13 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Catalog from "./pages/Catalog";
-import Detail from "./pages/Detail";
-import Checkout from "./pages/Checkout";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
-import WorkOrderRequest from "./pages/WorkOrderRequest";
-import RequestsInbox from "./pages/RequestsInbox";
 import ClientStatus from "./pages/ClientStatus";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { isAuthenticated } from "./utils/auth";
@@ -25,16 +21,12 @@ function App() {
         <Route
           element={
             <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
-          }
-        >
-          <Route path="/" element={<Catalog />} />
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/request" element={<WorkOrderRequest />} />
-          <Route path="/requests" element={<RequestsInbox />} />
-          <Route path="/status" element={<ClientStatus />} />
+          <Layout />
+        </ProtectedRoute>
+      }
+    >
+      <Route path="/" element={<Catalog />} />
+      <Route path="/status" element={<ClientStatus />} />
         </Route>
         <Route
           path="*"

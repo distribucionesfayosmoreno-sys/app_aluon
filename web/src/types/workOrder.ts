@@ -1,7 +1,4 @@
 export type WorkOrderRequestPayload = {
-  customerName: string;
-  customerEmail: string;
-  customerPhone: string;
   modeloPuerta: string;
   anchoMm: number;
   altoMm: number;
