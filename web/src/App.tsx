@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Catalog from "./pages/Catalog";
+import WorkOrderRequest from "./pages/WorkOrderRequest";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
@@ -26,6 +27,7 @@ function App() {
       }
     >
       <Route path="/" element={<Catalog />} />
+      <Route path="/request" element={<WorkOrderRequest />} />
       <Route path="/status" element={<ClientStatus />} />
         </Route>
         <Route
