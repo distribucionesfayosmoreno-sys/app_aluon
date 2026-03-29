@@ -55,7 +55,6 @@ export default function ClientStatus() {
   const [orders, setOrders] = useState<OrderStatusDto[]>([]);
   const [state, setState] = useState<LoadState>("idle");
   const [error, setError] = useState("");
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   const load = useCallback(async () => {
     try {
@@ -76,7 +75,6 @@ export default function ClientStatus() {
       }));
       setOrders(normalized);
       setState("success");
-      setLastUpdated(new Date());
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error inesperado.");
       setState("error");
@@ -109,9 +107,6 @@ export default function ClientStatus() {
       <div className="max-w-5xl mx-auto space-y-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h2 className="font-headline font-bold text-3xl md:text-4xl">
-              Estado de solicitudes y presupuestos
-            </h2>
             <p className="text-secondary mt-2 max-w-2xl">
               Revisa el avance de tus solicitudes, presupuestos y producción. Si necesitas ajustar datos, contacta a tu
               asesor antes de la validación.
@@ -169,7 +164,7 @@ export default function ClientStatus() {
                         </div>
                       </div>
                       <span className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary rounded-full whitespace-nowrap">
-                        {statusLabels[order.estado] ?? order.estado.replaceAll("_", " ")}
+                        {statusLabels[order.estado] ?? order.estado.split("_").join(" ")}
                       </span>
                     </div>
                   ))}
@@ -202,7 +197,7 @@ export default function ClientStatus() {
                         </div>
                       </div>
                       <span className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary rounded-full whitespace-nowrap">
-                        {statusLabels[order.estado] ?? order.estado.replaceAll("_", " ")}
+                        {statusLabels[order.estado] ?? order.estado.split("_").join(" ")}
                       </span>
                     </div>
                   ))}
