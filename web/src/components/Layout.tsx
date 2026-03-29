@@ -1,4 +1,5 @@
 import { Outlet, Link, useLocation, Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { clearAuth, isAuthenticated } from "../utils/auth";
 
 type NavItem = {
@@ -50,11 +51,11 @@ function MobileTabLink({ to, label }: { to: string; label: string }) {
 
 export default function Layout() {
   const navigate = useNavigate();
+  const [showLogout, setShowLogout] = useState(false);
   if (!isAuthenticated()) {
     return <Navigate to="/login" replace />;
   }
   const handleLogout = () => {
-    if (!window.confirm("¿Quieres cerrar sesión?")) return;
     clearAuth();
     navigate("/login", { replace: true });
   };
@@ -73,7 +74,7 @@ export default function Layout() {
           </nav>
           <button
             type="button"
-            onClick={handleLogout}
+            onClick={() => setShowLogout(true)}
             className="material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200"
             aria-label="Cerrar sesión"
             title="Cerrar sesión"
@@ -95,6 +96,40 @@ export default function Layout() {
         <Outlet />
       </main>
 
+      {showLogout ? (
+        <div className="fixed inset-0 z-[60] flex items-end md:items-center justify-center bg-black/40 px-4">
+          <div
+            className="w-full max-w-md rounded-t-2xl md:rounded-2xl bg-surface text-on-surface shadow-xl border border-outline-variant/40"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Confirmar cierre de sesión"
+          >
+            <div className="px-6 pt-6 pb-4">
+              <div className="text-xs uppercase tracking-[0.3em] text-secondary font-bold">Cuenta</div>
+              <h3 className="font-headline font-bold text-xl mt-2">¿Cerrar sesión?</h3>
+              <p className="text-sm text-secondary mt-2">
+                Perderás el acceso hasta volver a iniciar sesión.
+              </p>
+            </div>
+            <div className="px-6 pb-6 flex items-center gap-3">
+              <button
+                type="button"
+                className="flex-1 h-11 rounded-full border border-outline-variant/60 text-xs font-bold uppercase tracking-[0.2em] text-secondary"
+                onClick={() => setShowLogout(false)}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                className="flex-1 h-11 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-[0.2em]"
+                onClick={handleLogout}
+              >
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

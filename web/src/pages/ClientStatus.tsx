@@ -22,14 +22,6 @@ const stepLabels: Record<OrderWorkflowStep, string> = {
   FINAL: "Finalizada",
 };
 
-const statusLabels: Record<string, string> = {
-  PENDIENTE_MATERIAL: "Pendiente material",
-  EN_PRODUCCION: "En producción",
-  LISTO_MONTAJE: "Listo para montaje",
-  INSTALADA: "Instalada",
-  FACTURADA: "Facturada",
-};
-
 const normalizeWorkflowStep = (value: string): OrderWorkflowStep => {
   switch (value) {
     case "BANDEJA":
