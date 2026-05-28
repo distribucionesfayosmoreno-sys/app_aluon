@@ -93,7 +93,7 @@ export default function ForgotPasswordPage() {
         "--ag-background": "var(--ag-background, #fcf9f8)",
         "--ag-surface": "var(--ag-surface, #ffffff)",
         "--ag-on-primary": "var(--ag-on-primary, #ffffff)",
-      }}
+      } as React.CSSProperties}
     >
       <section className="relative flex min-h-screen items-center justify-center px-5 py-10 sm:px-10">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-surface-container-low via-background to-surface-container-low"></div>

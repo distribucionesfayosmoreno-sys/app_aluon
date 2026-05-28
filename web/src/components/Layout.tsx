@@ -9,10 +9,11 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { to: "/", label: "Modelos" },
+  { to: "/budget", label: "Presupuesto" },
   { to: "/status", label: "Estado" },
 ];
 
-function NavLink({ to, children }) {
+function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
   const location = useLocation();
   const isActive = location.pathname === to;
   return (
@@ -70,6 +71,7 @@ export default function Layout() {
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex gap-8 items-center">
             <NavLink to="/">Catálogo</NavLink>
+            <NavLink to="/budget">Presupuesto</NavLink>
             <NavLink to="/status">Estado</NavLink>
           </nav>
           <button

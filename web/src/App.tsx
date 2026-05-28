@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ClientStatus from "./pages/ClientStatus";
+import BudgetWizardPage from "./pages/BudgetWizardPage.tsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { isAuthenticated } from "./utils/auth";
 
@@ -22,13 +23,14 @@ function App() {
         <Route
           element={
             <ProtectedRoute>
-          <Layout />
-        </ProtectedRoute>
-      }
-    >
-      <Route path="/" element={<Catalog />} />
-      <Route path="/request" element={<WorkOrderRequest />} />
-      <Route path="/status" element={<ClientStatus />} />
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/" element={<Catalog />} />
+          <Route path="/request" element={<WorkOrderRequest />} />
+          <Route path="/budget" element={<BudgetWizardPage />} />
+          <Route path="/status" element={<ClientStatus />} />
         </Route>
         <Route
           path="*"
