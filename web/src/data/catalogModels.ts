@@ -8,10 +8,10 @@ export type CatalogModel = {
   panel: string;
 };
 
-const classicImg = new URL("../assets/doors/aluonClassic.webp", import.meta.url).toString();
-const biselImg = new URL("../assets/doors/aluonBisel.webp", import.meta.url).toString();
-const inoxImg = new URL("../assets/doors/aluonInox.webp", import.meta.url).toString();
-const venecianaImg = new URL("../assets/doors/aluonVeneciana.webp", import.meta.url).toString();
+const classicImg = "/ideas/aluon/images/aluonClassic.jpg";
+const biselImg = "/ideas/aluon/images/aluonBisel.jpg";
+const inoxImg = "/ideas/aluon/images/aluonInox.jpg";
+const venecianaImg = "/ideas/aluon/images/aluonVeneciana.jpg";
 const classicPanel = new URL("../assets/doors/panels/classic.webp", import.meta.url).toString();
 const biselPanel = new URL("../assets/doors/panels/bisel.webp", import.meta.url).toString();
 const inoxPanel = new URL("../assets/doors/panels/inox.webp", import.meta.url).toString();

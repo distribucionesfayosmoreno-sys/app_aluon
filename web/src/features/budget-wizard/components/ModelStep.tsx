@@ -6,9 +6,27 @@ type Props = {
   onSelect: (model: CatalogModel) => void;
 };
 
+const getModelImage = (modelo: string) => {
+  const key = modelo.toUpperCase();
+  switch (key) {
+    case 'CLASSIC':
+      return '/ideas/aluon/images/aluonClassic.jpg';
+    case 'BISEL':
+      return '/ideas/aluon/images/aluonBisel.jpg';
+    case 'INOX':
+      return '/ideas/aluon/images/aluonInox.jpg';
+    case 'PREMIUM':
+      return '/ideas/aluon/images/aluonPremium.jpg';
+    case 'VENECIANA':
+      return '/ideas/aluon/images/aluonVeneciana.jpg';
+    default:
+      return '/ideas/aluon/images/aluonClassic.jpg';
+  }
+};
+
 export const ModelStep = ({ models, loading, onSelect }: Props) => {
   if (loading) {
-    return <div className="text-xs text-secondary animate-pulse py-8 text-center">Cargando modelos del catálogo...</div>;
+    return <div className="text-xs text-secondary animate-pulse py-8 text-center font-body">Cargando modelos del catálogo...</div>;
   }
 
   return (
@@ -16,7 +34,7 @@ export const ModelStep = ({ models, loading, onSelect }: Props) => {
       <div className="text-center md:text-left">
         <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 1 de 5</span>
         <h3 className="font-headline font-bold text-2xl text-on-surface mt-1">Selecciona un modelo</h3>
-        <p className="text-xs text-secondary mt-1">
+        <p className="text-xs text-secondary mt-1 font-body">
           Elige la línea estética para tu puerta.
         </p>
       </div>
@@ -27,21 +45,15 @@ export const ModelStep = ({ models, loading, onSelect }: Props) => {
             key={model.id}
             type="button"
             onClick={() => onSelect(model)}
-            className="group relative flex flex-col text-left bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-primary transition-all duration-200 active:scale-[0.98] shadow-sm"
+            className="group relative flex flex-col justify-end text-left bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-primary transition-all duration-200 active:scale-[0.98] shadow-sm h-64 w-full"
           >
-            <div className="relative w-full h-36 bg-white flex items-center justify-center overflow-hidden border-b border-outline-variant/10">
-              {/* Template background */}
-              <img
-                src="/assets/template.png"
-                alt="Template"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              {/* Model image centered */}
-              {model.imagenModelo ? (
+            {/* Image container serving as full background */}
+            <div className="absolute inset-0 w-full h-full bg-white flex items-center justify-center overflow-hidden">
+              {model.modelo ? (
                 <img
-                  src={model.imagenModelo}
+                  src={getModelImage(model.modelo)}
                   alt={model.modelo}
-                  className="relative z-10 max-h-[80%] max-w-[80%] object-contain group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (
                 <div className="relative z-10 text-xs text-slate-800 uppercase font-black">
@@ -49,12 +61,14 @@ export const ModelStep = ({ models, loading, onSelect }: Props) => {
                 </div>
               )}
             </div>
-            <div className="p-4 space-y-1 bg-surface-container-high">
+
+            {/* Text Overlay exactly as requested */}
+            <div className="relative z-10 p-4 space-y-1 bg-white/90 backdrop-blur-md border-t border-slate-100 w-full">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-black text-on-surface tracking-wider uppercase font-space">
                   Serie {model.modelo}
                 </span>
-                <span className="text-[8px] font-bold text-primary tracking-widest uppercase bg-primary-fixed-dim/20 px-2 py-0.5 rounded-full font-space">
+                <span className="text-[8px] font-bold text-primary tracking-widest uppercase bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-space">
                   UI/UX
                 </span>
               </div>
@@ -67,5 +81,4 @@ export const ModelStep = ({ models, loading, onSelect }: Props) => {
       </div>
     </div>
   );
-
 };

@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --ag-primary: #3b82f6;       /* Royal Blue */
-  --ag-secondary: #94a3b8;     /* Slate-400 */
-  --ag-background: #020617;    /* Slate-950 (Black) */
-  --ag-surface: #0b0f19;       /* Dark blue-black */
+  --ag-secondary: #64748b;     /* Slate-500 */
+  --ag-background: #ffffff;    /* White background */
+  --ag-surface: #ffffff;       /* White surface */
   --ag-on-primary: #ffffff;
 }
 
@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
   font-family: "Sora", sans-serif;
   background-color: var(--ag-background);
-  color: #f8fafc;
+  color: #1b1b1b;
 }
 
 * {
@@ -29,7 +29,7 @@ body {
 }
 
 .glass-panel {
-  background: rgba(11, 15, 25, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
 }
 
