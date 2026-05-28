@@ -49,7 +49,7 @@ export const MeasurementsStep = ({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-[#a92f32] font-bold">Paso 5 de 5</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 5 de 5</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Dimensiones & Opciones</h3>
         </div>
         <button
@@ -76,7 +76,7 @@ export const MeasurementsStep = ({
                 id="mobile-width"
                 type="number"
                 inputMode="numeric"
-                className="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs w-full focus:ring-1 focus:ring-[#a92f32] outline-none"
+                className="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs w-full focus:ring-1 focus:ring-primary outline-none"
                 placeholder="Ancho (mm)"
                 value={widthMm || ''}
                 onChange={e => onWidthChange(Number(e.target.value))}
@@ -88,7 +88,7 @@ export const MeasurementsStep = ({
                 id="mobile-height"
                 type="number"
                 inputMode="numeric"
-                className="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs w-full focus:ring-1 focus:ring-[#a92f32] outline-none"
+                className="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs w-full focus:ring-1 focus:ring-primary outline-none"
                 placeholder="Alto (mm)"
                 value={heightMm || ''}
                 onChange={e => onHeightChange(Number(e.target.value))}
@@ -102,7 +102,7 @@ export const MeasurementsStep = ({
               id="mobile-clearance"
               type="number"
               inputMode="numeric"
-              className="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs w-full focus:ring-1 focus:ring-[#a92f32] outline-none"
+              className="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs w-full focus:ring-1 focus:ring-primary outline-none"
               placeholder="Holgura (mm)"
               value={floorClearanceMm || ''}
               onChange={e => onFloorClearanceChange(Number(e.target.value))}
@@ -125,7 +125,7 @@ export const MeasurementsStep = ({
                 type="checkbox"
                 checked={larguero}
                 onChange={e => onLargueroChange(e.target.checked)}
-                className="w-4 h-4 rounded text-[#a92f32] focus:ring-[#a92f32]"
+                className="w-4 h-4 rounded text-primary focus:ring-primary"
               />
             </label>
 
@@ -135,7 +135,7 @@ export const MeasurementsStep = ({
                 type="checkbox"
                 checked={marcoSuperior}
                 onChange={e => onMarcoSuperiorChange(e.target.checked)}
-                className="w-4 h-4 rounded text-[#a92f32] focus:ring-[#a92f32]"
+                className="w-4 h-4 rounded text-primary focus:ring-primary"
               />
             </label>
 
@@ -145,7 +145,7 @@ export const MeasurementsStep = ({
                 type="checkbox"
                 checked={bisagras}
                 onChange={e => onBisagrasChange(e.target.checked)}
-                className="w-4 h-4 rounded text-[#a92f32] focus:ring-[#a92f32]"
+                className="w-4 h-4 rounded text-primary focus:ring-primary"
               />
             </label>
 
@@ -155,7 +155,7 @@ export const MeasurementsStep = ({
                 type="checkbox"
                 checked={porteroAutomatico}
                 onChange={e => onPorteroAutomaticoChange(e.target.checked)}
-                className="w-4 h-4 rounded text-[#a92f32] focus:ring-[#a92f32]"
+                className="w-4 h-4 rounded text-primary focus:ring-primary"
               />
             </label>
           </div>
@@ -165,11 +165,12 @@ export const MeasurementsStep = ({
       <button
         type="button"
         onClick={handleNext}
-        className="w-full py-3.5 px-6 bg-[#a92f32] text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-md hover:bg-[#8c2427] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+        className="w-full py-3.5 px-6 bg-primary text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-md hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
       >
         Continuar al Resumen
         <span className="material-symbols-outlined text-sm">arrow_forward</span>
       </button>
+
     </div>
   );
 };

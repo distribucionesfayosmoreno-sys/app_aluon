@@ -28,7 +28,7 @@ export const VariantStep = ({ model, variants, loading, onBack, onSelect }: Prop
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-[#a92f32] font-bold">Paso 4 de 5</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 4 de 5</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Tipo de Apertura</h3>
         </div>
         <button
@@ -51,7 +51,7 @@ export const VariantStep = ({ model, variants, loading, onBack, onSelect }: Prop
             key={variant.id}
             type="button"
             onClick={() => onSelect(variant)}
-            className="group flex items-center justify-between p-4 bg-surface-container rounded-2xl border border-outline-variant/30 hover:border-[#a92f32] transition-colors active:scale-[0.99] text-left shadow-sm"
+            className="group flex items-center justify-between p-4 bg-surface-container rounded-2xl border border-outline-variant/30 hover:border-primary transition-colors active:scale-[0.99] text-left shadow-sm"
           >
             <div>
               <div className="text-xs font-black text-on-surface uppercase tracking-wide">
@@ -61,12 +61,13 @@ export const VariantStep = ({ model, variants, loading, onBack, onSelect }: Prop
                 Especificaciones de cerramientos de aluminio
               </div>
             </div>
-            <span className="material-symbols-outlined text-secondary group-hover:text-[#a92f32] transition-colors">
+            <span className="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">
               arrow_forward_ios
             </span>
           </button>
         ))}
       </div>
+
     </div>
   );
 };

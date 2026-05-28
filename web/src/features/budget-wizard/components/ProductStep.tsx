@@ -27,7 +27,7 @@ export const ProductStep = ({ model, products, loading, onBack, onSelect }: Prop
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-[#a92f32] font-bold">Paso 2 de 5</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 2 de 5</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Tipo de estructura</h3>
         </div>
         <button
@@ -50,7 +50,7 @@ export const ProductStep = ({ model, products, loading, onBack, onSelect }: Prop
             key={product.id}
             type="button"
             onClick={() => onSelect(product)}
-            className="group flex items-center justify-between p-4 bg-surface-container rounded-2xl border border-outline-variant/30 hover:border-[#a92f32] transition-colors active:scale-[0.99] text-left shadow-sm"
+            className="group flex items-center justify-between p-4 bg-surface-container rounded-2xl border border-outline-variant/30 hover:border-primary transition-colors active:scale-[0.99] text-left shadow-sm"
           >
             <div>
               <div className="text-xs font-black text-on-surface uppercase tracking-wide">
@@ -60,12 +60,13 @@ export const ProductStep = ({ model, products, loading, onBack, onSelect }: Prop
                 Cerramientos de aluminio extrusionado
               </div>
             </div>
-            <span className="material-symbols-outlined text-secondary group-hover:text-[#a92f32] transition-colors">
+            <span className="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">
               arrow_forward_ios
             </span>
           </button>
         ))}
       </div>
+
     </div>
   );
 };

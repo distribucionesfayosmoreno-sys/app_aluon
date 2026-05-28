@@ -34,7 +34,7 @@ export const OptionsStep = ({
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center">
-        <span className="text-[10px] uppercase tracking-widest text-[#a92f32] font-bold">Paso Final</span>
+        <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso Final</span>
         <h3 className="font-headline font-bold text-2xl text-on-surface mt-1">¿Qué desea hacer?</h3>
         <p className="text-xs text-secondary mt-1 max-w-sm mx-auto">
           Cierre el presupuesto, y elíjase qué hacer, o consulte su detalle cuando lo necesite.
@@ -48,11 +48,7 @@ export const OptionsStep = ({
           type="button"
           disabled={submitting}
           onClick={onFinalize}
-          className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-2xl text-white font-black text-xs uppercase tracking-widest transition-all duration-200"
-          style={{
-            backgroundColor: '#a92f32',
-            boxShadow: '0 4px 14px rgba(169, 47, 50, 0.35)',
-          }}
+          className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-2xl text-white font-black text-xs uppercase tracking-widest bg-primary hover:bg-blue-700 active:scale-[0.98] transition-all duration-200 shadow-md shadow-primary/20"
         >
           <span className="material-symbols-outlined text-sm">save</span>
           {submitting ? 'Guardando...' : 'GUARDAR PRESUPUESTO'}
@@ -130,7 +126,7 @@ export const OptionsStep = ({
             onClick={() => setDetailOpen(true)}
             className="w-full flex items-center gap-4 p-4 rounded-2xl bg-surface-container border border-outline-variant/30 text-left hover:bg-surface-container-high transition-all duration-200 group"
           >
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-[#a92f32] bg-red-50 group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-primary bg-primary/10 group-hover:scale-105 transition-transform">
               <span className="material-symbols-outlined text-base">visibility</span>
             </div>
             <div>

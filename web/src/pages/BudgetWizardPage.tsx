@@ -21,25 +21,13 @@ export default function BudgetWizardPage() {
     <section className="bg-surface-container-low min-h-screen py-6 px-4 md:px-16">
       <div className="max-w-xl mx-auto space-y-6">
         {/* Page Header */}
-        <header className="bg-surface rounded-2xl p-5 border border-outline-variant/30 flex items-center justify-between shadow-sm">
-          <div>
-            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Presupuestos</div>
-            <h2 className="font-headline font-black text-lg text-on-surface mt-0.5">Wizard de Puertas</h2>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="flex flex-col items-end select-none bg-surface-container border border-outline-variant/20 py-1 px-2.5 rounded-lg">
-              <span className="text-[9px] font-black tracking-[0.15em] text-[#a92f32]">ALUON</span>
-              <span className="text-[7px] font-semibold text-secondary uppercase tracking-wider animate-pulse" style={{ fontSize: '7px', lineHeight: '1.1' }}>Aluminio Soldado</span>
-            </div>
-            <button
+        <button
               type="button"
               onClick={wizard.reset}
-              className="text-[10px] font-bold uppercase tracking-widest text-[#a92f32] active:scale-95 transition-transform"
+              className="text-[10px] font-bold uppercase tracking-widest text-primary active:scale-95 transition-transform"
             >
               Reiniciar
             </button>
-          </div>
-        </header>
 
         {/* Global Errors */}
         {wizard.error && (

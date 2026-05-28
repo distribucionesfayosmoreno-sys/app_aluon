@@ -33,7 +33,7 @@ export const DetailModal = ({ isOpen, onClose, items }: Props) => {
         <div className="flex-1 overflow-y-auto p-5 space-y-6">
           {items.map((item, idx) => (
             <div key={idx} className="border-b border-outline-variant/10 pb-5 last:border-0 last:pb-0 space-y-4">
-              <div className="text-[10px] font-black uppercase tracking-wider text-[#a92f32]">
+              <div className="text-[10px] font-black uppercase tracking-wider text-primary">
                 Puerta #{idx + 1} — {item.productCategory.replace('_', ' ')}
               </div>
 

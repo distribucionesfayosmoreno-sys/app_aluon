@@ -28,7 +28,7 @@ export const ColorStep = ({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-[#a92f32] font-bold">Paso 3 de 5</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 3 de 5</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Color & Imprimación</h3>
         </div>
         <button
@@ -56,8 +56,8 @@ export const ColorStep = ({
                 className="w-12 h-12 rounded-xl flex items-center justify-center border-2 transition-all active:scale-90"
                 style={{
                   backgroundColor: c.hex,
-                  borderColor: color === c.hex ? '#a92f32' : 'transparent',
-                  boxShadow: color === c.hex ? '0 0 8px rgba(169, 47, 50, 0.4)' : 'none',
+                  borderColor: color === c.hex ? 'var(--ag-primary)' : 'transparent',
+                  boxShadow: color === c.hex ? '0 0 8px rgba(59, 130, 246, 0.4)' : 'none',
                 }}
                 title={c.label}
               >
@@ -83,7 +83,7 @@ export const ColorStep = ({
             <input
               id="custom-color"
               type="text"
-              className="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs w-full focus:ring-1 focus:ring-[#a92f32] outline-none"
+              className="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs w-full focus:ring-1 focus:ring-primary outline-none"
               placeholder="#ffffff"
               value={color}
               onChange={e => onColorChange(e.target.value as ColorHex)}
@@ -100,7 +100,7 @@ export const ColorStep = ({
             type="checkbox"
             checked={primerRequired}
             onChange={e => onPrimerChange(e.target.checked)}
-            className="w-5 h-5 rounded border-outline-variant text-[#a92f32] focus:ring-[#a92f32]"
+            className="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary"
           />
           <div>
             <span className="text-xs font-black text-on-surface block">¿Necesita imprimación previa?</span>
@@ -114,11 +114,12 @@ export const ColorStep = ({
       <button
         type="button"
         onClick={onNext}
-        className="w-full py-3 px-6 bg-[#a92f32] text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-md hover:bg-[#8c2427] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+        className="w-full py-3 px-6 bg-primary text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-md hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
       >
         Continuar a apertura
         <span className="material-symbols-outlined text-sm">arrow_forward</span>
       </button>
     </div>
+
   );
 };

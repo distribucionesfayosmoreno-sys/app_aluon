@@ -42,7 +42,7 @@ export const SummaryStep = ({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-[#a92f32] font-bold">Resumen de puerta</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Resumen de puerta</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Revisa el diseño</h3>
         </div>
         <button
@@ -112,8 +112,9 @@ export const SummaryStep = ({
         type="button"
         disabled={submitting}
         onClick={onFinalize}
-        className="w-full py-3.5 px-6 bg-[#a92f32] text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-md hover:bg-[#8c2427] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+        className="w-full py-3.5 px-6 bg-primary text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-md hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
       >
+
         {submitting ? 'Guardando...' : 'Aceptar y Guardar Puerta'}
         <span className="material-symbols-outlined text-sm">done_all</span>
       </button>

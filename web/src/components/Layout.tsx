@@ -20,7 +20,7 @@ function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
     <Link
       to={to}
       className={`font-inter text-[10px] uppercase tracking-widest font-bold transition-colors ${
-        isActive ? "text-[#a92f32] scale-110" : "text-[#605b77] hover:text-[#a92f32]"
+        isActive ? "text-primary scale-110" : "text-secondary hover:text-primary"
       }`}
     >
       {children}
@@ -35,14 +35,15 @@ function MobileTabLink({ to, label }: { to: string; label: string }) {
     <Link
       to={to}
       aria-current={isActive ? "page" : undefined}
-      className="relative flex items-center justify-center px-3 py-2 text-[11px] uppercase tracking-[0.25em] font-bold whitespace-nowrap transition-colors"
-      style={{ color: isActive ? "#a92f32" : "#7b7788" }}
+      className={`relative flex items-center justify-center px-3 py-2 text-[11px] uppercase tracking-[0.25em] font-bold whitespace-nowrap transition-colors ${
+        isActive ? "text-primary" : "text-secondary"
+      }`}
     >
       <span>{label}</span>
       <span
         className="absolute left-3 right-3 -bottom-[1px] h-[2px] rounded-full transition-opacity"
         style={{
-          backgroundColor: "#a92f32",
+          backgroundColor: "var(--ag-primary)",
           opacity: isActive ? 1 : 0,
         }}
       />
@@ -62,9 +63,9 @@ export default function Layout() {
   };
   return (
     <div className="min-h-screen bg-surface text-on-surface">
-      <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#fcf9f8]">
+      <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-surface border-b border-outline-variant/20">
         <div className="flex items-center gap-4">
-          <h1 className="text-xl font-black tracking-[-0.02em] text-[#1b1b1b] font-headline">
+          <h1 className="text-xl font-black tracking-[-0.02em] text-on-surface font-headline">
             <img alt="ALUON" className="h-6 md:h-7 w-auto" src="/assets/logo.png" />
           </h1>
         </div>
@@ -77,7 +78,7 @@ export default function Layout() {
           <button
             type="button"
             onClick={() => setShowLogout(true)}
-            className="material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200"
+            className="material-symbols-outlined text-secondary hover:text-primary cursor-pointer active:scale-95 duration-200"
             aria-label="Cerrar sesión"
             title="Cerrar sesión"
           >
@@ -86,7 +87,7 @@ export default function Layout() {
         </div>
       </header>
 
-      <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-[#fcf9f8]/95 backdrop-blur-xl border-b border-[#dfbfbd]/40">
+      <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-surface/95 backdrop-blur-xl border-b border-outline-variant/10">
         <div className="flex items-center gap-3 px-4 h-12 overflow-x-auto">
           {navItems.map((item) => (
             <MobileTabLink key={item.to} to={item.to} label={item.label} />

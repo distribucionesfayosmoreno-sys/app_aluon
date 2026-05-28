@@ -14,7 +14,7 @@ export const ModelStep = ({ models, loading, onSelect }: Props) => {
   return (
     <div className="space-y-4">
       <div className="text-center md:text-left">
-        <span className="text-[10px] uppercase tracking-widest text-[#a92f32] font-bold">Paso 1 de 5</span>
+        <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 1 de 5</span>
         <h3 className="font-headline font-bold text-2xl text-on-surface mt-1">Selecciona un modelo</h3>
         <p className="text-xs text-secondary mt-1">
           Elige la línea estética para tu puerta.
@@ -27,36 +27,45 @@ export const ModelStep = ({ models, loading, onSelect }: Props) => {
             key={model.id}
             type="button"
             onClick={() => onSelect(model)}
-            className="group relative flex flex-col text-left bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-[#a92f32] transition-all duration-200 active:scale-[0.98] shadow-sm"
+            className="group relative flex flex-col text-left bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-primary transition-all duration-200 active:scale-[0.98] shadow-sm"
           >
-            <div className="relative w-full h-32 bg-surface-container-high overflow-hidden">
+            <div className="relative w-full h-36 bg-white flex items-center justify-center overflow-hidden border-b border-outline-variant/10">
+              {/* Template background */}
+              <img
+                src="/assets/template.png"
+                alt="Template"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* Model image centered */}
               {model.imagenModelo ? (
                 <img
                   src={model.imagenModelo}
                   alt={model.modelo}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="relative z-10 max-h-[80%] max-w-[80%] object-contain group-hover:scale-105 transition-transform duration-300"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-xs text-secondary uppercase font-black">
+                <div className="relative z-10 text-xs text-slate-800 uppercase font-black">
                   {model.modelo}
                 </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3 text-white text-[10px] font-black uppercase tracking-widest bg-[#a92f32] py-0.5 px-2 rounded">
-                {model.modelo}
-              </div>
             </div>
-            <div className="p-4">
-              <span className="text-[11px] font-bold text-on-surface block uppercase tracking-wider">
-                Serie {model.modelo}
-              </span>
-              <span className="text-[10px] text-secondary mt-1 block">
-                Acabados y perfiles de calidad premium.
-              </span>
+            <div className="p-4 space-y-1 bg-surface-container-high">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-black text-on-surface tracking-wider uppercase font-space">
+                  Serie {model.modelo}
+                </span>
+                <span className="text-[8px] font-bold text-primary tracking-widest uppercase bg-primary-fixed-dim/20 px-2 py-0.5 rounded-full font-space">
+                  UI/UX
+                </span>
+              </div>
+              <p className="text-[10px] leading-relaxed text-secondary font-body">
+                Acabados en aluminio de alta durabilidad y diseño moderno.
+              </p>
             </div>
           </button>
         ))}
       </div>
     </div>
   );
+
 };

@@ -73,10 +73,10 @@ export default function LoginPage() {
       className="min-h-screen bg-[var(--ag-background)] text-on-surface"
       style={{
         // Variables listas para inyectar la paleta corporativa (Antigravity theme tokens).
-        "--ag-primary": "var(--ag-primary, #a92f32)",
-        "--ag-secondary": "var(--ag-secondary, #605b77)",
-        "--ag-background": "var(--ag-background, #fcf9f8)",
-        "--ag-surface": "var(--ag-surface, #ffffff)",
+        "--ag-primary": "var(--ag-primary, #3b82f6)",
+        "--ag-secondary": "var(--ag-secondary, #94a3b8)",
+        "--ag-background": "var(--ag-background, #020617)",
+        "--ag-surface": "var(--ag-surface, #0b0f19)",
         "--ag-on-primary": "var(--ag-on-primary, #ffffff)",
       } as React.CSSProperties}
     >

@@ -140,7 +140,7 @@ export const DoneStep = ({ quote, onNew, onSendChannel, submitting }: Props) => 
               <input
                 type="email"
                 required
-                className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs focus:ring-1 focus:ring-[#a92f32] outline-none"
+                className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs focus:ring-1 focus:ring-primary outline-none"
                 placeholder="correo@ejemplo.com"
                 value={targetEmail}
                 onChange={e => setTargetEmail(e.target.value)}
@@ -163,7 +163,7 @@ export const DoneStep = ({ quote, onNew, onSendChannel, submitting }: Props) => 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 bg-[#a92f32] text-white hover:bg-[#8c2427] rounded-xl text-[10px] font-bold uppercase tracking-wider"
+                  className="px-4 py-2 bg-primary text-white hover:bg-blue-700 rounded-xl text-[10px] font-bold uppercase tracking-wider"
                 >
                   {submitting ? 'Enviando...' : 'Enviar'}
                 </button>
