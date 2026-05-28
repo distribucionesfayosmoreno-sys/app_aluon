@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Key, Mail, MapPin, Phone, Store, User } from "lucide-react";
 
+import { getApiUrl } from "../utils/api";
+
 type RegistrationFormState = {
   nombreComercial: string;
   razonSocial: string;
@@ -75,9 +77,9 @@ export default function RegisterPage() {
 
     try {
       setStatus("submitting");
-      const apiBase = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
-      const trimmedBase = apiBase.replace(/\/$/, "");
-      const endpoint = `${trimmedBase}/api/registrations`;
+      const apiBase = getApiUrl();
+      const endpoint = `${apiBase}/api/registrations`;
+
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

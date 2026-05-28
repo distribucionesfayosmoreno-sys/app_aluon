@@ -10,6 +10,8 @@ import type {
 } from "./BudgetWizard.types";
 import { getAuth } from "../../utils/auth";
 
+import { getApiUrl } from "../../utils/api";
+
 const defaultBooleans = {
   primerRequired: false,
   larguero: false,
@@ -20,7 +22,8 @@ const defaultBooleans = {
 
 const isHexColor = (value: string): value is ColorHex => /^#[0-9a-fA-F]{6}$/.test(value);
 
-const apiBase = ((import.meta.env.VITE_API_URL as string | undefined) ?? "").replace(/\/$/, "");
+const apiBase = getApiUrl();
+
 
 export const useBudgetWizard = (initialModelId?: string | null) => {
   const [step, setStep] = useState<Step>("MODELO");

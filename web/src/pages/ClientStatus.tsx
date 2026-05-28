@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { OrderStatusDto, OrderWorkflowStep } from "../types/orderStatus";
+import { getApiUrl } from "../utils/api";
 
 type LoadState = "idle" | "loading" | "success" | "error";
 
@@ -52,9 +53,9 @@ export default function ClientStatus() {
     try {
       setState("loading");
       setError("");
-      const apiBase = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
-      const trimmedBase = apiBase.replace(/\/$/, "");
-      const endpoint = `${trimmedBase}/api/orders/status`;
+      const apiBase = getApiUrl();
+      const endpoint = `${apiBase}/api/orders/status`;
+
       const response = await fetch(endpoint);
       if (!response.ok) {
         const message = await response.text();

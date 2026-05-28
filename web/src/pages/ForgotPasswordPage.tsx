@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Key, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getApiUrl } from "../utils/api";
+
 
 type Step = "request" | "reset" | "done";
 
@@ -14,10 +16,10 @@ export default function ForgotPasswordPage() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
 
-  const apiBase = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
-  const trimmedBase = apiBase.replace(/\/$/, "");
+  const trimmedBase = getApiUrl();
 
   const requestReset = async (event: React.FormEvent<HTMLFormElement>) => {
+
     event.preventDefault();
     if (!email.trim()) {
       setErrorMessage("El correo electrónico es obligatorio.");

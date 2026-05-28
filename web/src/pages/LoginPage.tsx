@@ -3,6 +3,8 @@ import { Lock, Mail } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setAuth } from "../utils/auth";
 
+import { getApiUrl } from "../utils/api";
+
 type LoginFormState = {
   email: string;
   password: string;
@@ -40,9 +42,9 @@ export default function LoginPage() {
 
     try {
       setStatus("submitting");
-      const apiBase = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
-      const trimmedBase = apiBase.replace(/\/$/, "");
-      const endpoint = `${trimmedBase}/api/auth/login`;
+      const apiBase = getApiUrl();
+      const endpoint = `${apiBase}/api/auth/login`;
+
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

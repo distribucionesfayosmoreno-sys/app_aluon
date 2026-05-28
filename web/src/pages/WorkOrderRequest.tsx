@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { catalogModels } from "../data/catalogModels";
 import type { WorkOrderRequestResponse } from "../types/workOrder";
 import { getAuth } from "../utils/auth";
+import { getApiUrl } from "../utils/api";
+
 
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
@@ -63,9 +65,8 @@ export default function WorkOrderRequest() {
 
     try {
       setStatus("submitting");
-      const apiBase = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
-      const trimmedBase = apiBase.replace(/\/$/, "");
-      const endpoint = `${trimmedBase}/api/orders/requests`;
+      const apiBase = getApiUrl();
+      const endpoint = `${apiBase}/api/orders/requests`;
       const response = await fetch(endpoint, {
         method: "POST",
         body: payload,
