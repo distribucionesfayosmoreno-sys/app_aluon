@@ -65,7 +65,7 @@ export const ModelStep = ({ models, loading, onSelect }: Props) => {
             {/* Text Overlay exactly as requested */}
             <div className="relative z-10 p-4 pt-10 space-y-1 bg-gradient-to-t from-white via-white/90 to-transparent w-full">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-black text-on-surface tracking-wider uppercase font-space">
+                <span className="text-base font-black text-on-surface tracking-wider uppercase font-space">
                   Serie {model.modelo}
                 </span>
               </div>
