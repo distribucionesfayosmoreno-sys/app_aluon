@@ -189,6 +189,31 @@ export const useBudgetWizard = (initialModelId?: string | null) => {
     setStep("PRODUCTO");
   };
 
+  const selectStructure = async (category: string, type: string) => {
+    const prod = doorProducts.find(p => p.producto === category);
+    if (!prod) return;
+    setSelectedProduct(prod);
+
+    setLoading(true);
+    try {
+      const res = await fetch(`${apiBase}/api/catalog/variants?puertaId=${encodeURIComponent(prod.id)}`);
+      if (res.ok) {
+        const variantsData = await res.json();
+        setVariants(variantsData);
+        const vrnt = (variantsData as CatalogVariant[]).find(v => v.variante === type);
+        if (vrnt) {
+          setSelectedVariant(vrnt);
+        }
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+
+    setStep("COLOR");
+  };
+
   const selectProduct = async (product: CatalogDoorProduct) => {
     setSelectedProduct(product);
     setSelectedVariant(null);
@@ -381,6 +406,7 @@ export const useBudgetWizard = (initialModelId?: string | null) => {
     setPorteroAutomatico,
     setStep,
     selectModel,
+    selectStructure,
     selectProduct,
     selectVariant,
     addCurrentItem,

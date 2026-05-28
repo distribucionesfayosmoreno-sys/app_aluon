@@ -49,7 +49,7 @@ export const MeasurementsStep = ({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 5 de 5</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 4 de 4</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Dimensiones & Opciones</h3>
         </div>
         <button

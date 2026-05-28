@@ -28,7 +28,7 @@ export const ColorStep = ({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 3 de 5</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 3 de 4</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Color & Imprimación</h3>
         </div>
         <button
@@ -116,7 +116,7 @@ export const ColorStep = ({
         onClick={onNext}
         className="w-full py-3 px-6 bg-primary text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-md hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
       >
-        Continuar a apertura
+        Continuar a medidas
         <span className="material-symbols-outlined text-sm">arrow_forward</span>
       </button>
     </div>

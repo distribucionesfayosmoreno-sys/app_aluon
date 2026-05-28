@@ -4,7 +4,6 @@ import { useBudgetWizard } from "../features/budget-wizard/useBudgetWizard";
 import { ModelStep } from "../features/budget-wizard/components/ModelStep";
 import { ProductStep } from "../features/budget-wizard/components/ProductStep";
 import { ColorStep } from "../features/budget-wizard/components/ColorStep";
-import { VariantStep } from "../features/budget-wizard/components/VariantStep";
 import { MeasurementsStep } from "../features/budget-wizard/components/MeasurementsStep";
 import { SummaryStep } from "../features/budget-wizard/components/SummaryStep";
 import { OptionsStep } from "../features/budget-wizard/components/OptionsStep";
@@ -49,10 +48,9 @@ export default function BudgetWizardPage() {
           {wizard.step === 'PRODUCTO' && wizard.selectedModel && (
             <ProductStep
               model={wizard.selectedModel}
-              products={wizard.doorProducts}
               loading={wizard.loading}
               onBack={() => wizard.setStep('MODELO')}
-              onSelect={wizard.selectProduct}
+              onSelect={wizard.selectStructure}
             />
           )}
 
@@ -63,17 +61,7 @@ export default function BudgetWizardPage() {
               onColorChange={wizard.setColor}
               onPrimerChange={wizard.setPrimerRequired}
               onBack={() => wizard.setStep('PRODUCTO')}
-              onNext={() => wizard.setStep('APERTURA')}
-            />
-          )}
-
-          {wizard.step === 'APERTURA' && wizard.selectedModel && wizard.selectedProduct && (
-            <VariantStep
-              model={wizard.selectedModel}
-              variants={wizard.variants}
-              loading={wizard.loading}
-              onBack={() => wizard.setStep('COLOR')}
-              onSelect={wizard.selectVariant}
+              onNext={() => wizard.setStep('MEDIDAS')}
             />
           )}
 
@@ -93,7 +81,7 @@ export default function BudgetWizardPage() {
               onMarcoSuperiorChange={wizard.setMarcoSuperior}
               onBisagrasChange={wizard.setBisagras}
               onPorteroAutomaticoChange={wizard.setPorteroAutomatico}
-              onBack={() => wizard.setStep('APERTURA')}
+              onBack={() => wizard.setStep('COLOR')}
               onNext={() => wizard.setStep('RESUMEN')}
             />
           )}
