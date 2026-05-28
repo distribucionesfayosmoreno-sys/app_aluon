@@ -1,4 +1,4 @@
-const CACHE_NAME = "aluon-pwa-v2";
+const CACHE_NAME = "aluon-pwa-v3";
 const CORE_ASSETS = [
   "/",
   "/index.html",
