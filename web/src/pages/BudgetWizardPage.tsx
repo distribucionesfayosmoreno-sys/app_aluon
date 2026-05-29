@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { useBudgetWizard } from "../features/budget-wizard/useBudgetWizard";
 import { ModelStep } from "../features/budget-wizard/components/ModelStep";
@@ -16,6 +16,11 @@ export default function BudgetWizardPage() {
   const initialModelId = queryParams.get('model');
 
   const wizard = useBudgetWizard(initialModelId);
+
+  // Scroll to top on step changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [wizard.step]);
 
   return (
     <section className="bg-surface-container-low min-h-screen py-6 px-4 md:px-16">
