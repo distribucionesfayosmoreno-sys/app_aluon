@@ -33,3 +33,9 @@ body {
   backdrop-filter: blur(12px);
 }
 
+.scale-\[1\.65\] {
+    --tw-scale-x: 3.65;
+    --tw-scale-y: 3.65;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
