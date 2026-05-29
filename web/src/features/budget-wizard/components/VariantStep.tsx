@@ -17,14 +17,16 @@ export const VariantStep = ({ model, doorType, bisagras, onSelect, onBack }: Pro
       label: 'Izquierda',
       image: isTwoLeaves
         ? '/ideas/aluon/images/abatible%20dos%20hojas%20izquierda.avif'
-        : '/ideas/aluon/images/izquierda.avif'
+        : '/ideas/aluon/images/izquierda.avif',
+      imgClass: ''
     },
     {
       value: true,
       label: 'Derecha',
       image: isTwoLeaves
         ? '/ideas/aluon/images/abatible%20dos%20hojas%20derecha.jpg'
-        : '/ideas/aluon/images/derecha.jpg'
+        : '/ideas/aluon/images/derecha.jpg',
+      imgClass: 'scale-[1.35] mix-blend-multiply'
     }
   ];
 
@@ -77,7 +79,7 @@ export const VariantStep = ({ model, doorType, bisagras, onSelect, onBack }: Pro
                   <img
                     src={opt.image}
                     alt={opt.label}
-                    className="max-h-[85px] max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-500"
+                    className={`max-h-[85%] max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-500 ${opt.imgClass}`}
                   />
                 </div>
 
