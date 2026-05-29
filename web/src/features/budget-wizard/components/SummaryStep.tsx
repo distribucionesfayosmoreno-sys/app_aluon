@@ -119,7 +119,7 @@ export const SummaryStep = ({
               src={getOpeningImage(variant.variante, bisagras) || ''}
               alt="Sentido de Apertura"
               className={`max-h-[80%] max-w-[85%] object-contain relative z-10 ${
-                bisagras ? 'scale-[1.35] mix-blend-multiply' : ''
+                bisagras ? 'scale-[1.65] mix-blend-multiply' : ''
               }`}
             />
             <div className="absolute bottom-2 right-3 text-[9px] uppercase tracking-widest text-secondary font-space z-10">

@@ -95,6 +95,88 @@ export const DoneStep = ({ quote, postFinalizeAction, onNew, onSendChannel, subm
         </div>
       </div>
 
+      {/* Detailed Budget Lines - "El Presupuesto Real" */}
+      <div className="bg-surface rounded-3xl border border-outline-variant/35 p-5 space-y-4 shadow-sm print:border-none print:shadow-none">
+        <h4 className="font-space font-black text-xs uppercase tracking-wider text-primary">Detalle del Presupuesto</h4>
+        
+        <div className="divide-y divide-outline-variant/20">
+          {quote.items.map((item, idx) => (
+            <div key={idx} className="py-3.5 space-y-2 first:pt-0 last:pb-0">
+              <div className="flex justify-between items-start gap-4">
+                <div>
+                  <span className="text-[9px] font-bold text-primary uppercase tracking-widest bg-primary/10 px-2 py-0.5 rounded-full">
+                    Línea {idx + 1}
+                  </span>
+                  <div className="text-xs font-black text-on-surface mt-1.5 font-space">
+                    Modelo {item.doorModel} — {item.doorType.replace('_', ' ')}
+                  </div>
+                  <div className="text-[10px] text-secondary mt-1 font-body">
+                    Categoría: {item.productCategory.replace('_', ' ')} · Medidas: {item.widthMm} x {item.heightMm} mm ({item.m2.toFixed(2)} m²)
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs font-black text-on-surface font-space">
+                    {item.lineTotal.toFixed(2)} €
+                  </div>
+                  <div className="text-[9px] text-secondary mt-0.5">
+                    {item.pricePerM2.toFixed(2)} € / m²
+                  </div>
+                </div>
+              </div>
+
+              {/* Specs Badge list */}
+              <div className="flex flex-wrap gap-1.5 pt-1.5">
+                <span className="text-[8px] font-bold text-secondary uppercase bg-surface-container px-2 py-0.5 rounded font-space flex items-center gap-1">
+                  Color: {item.colorCode}
+                  <div className="w-2 h-2 rounded-full border border-outline-variant/30" style={{ backgroundColor: item.colorCode }} />
+                </span>
+                {item.primerRequired && (
+                  <span className="text-[8px] font-bold text-secondary uppercase bg-surface-container px-2 py-0.5 rounded font-space">
+                    Imprimación
+                  </span>
+                )}
+                {item.larguero && (
+                  <span className="text-[8px] font-bold text-secondary uppercase bg-surface-container px-2 py-0.5 rounded font-space">
+                    Larguero
+                  </span>
+                )}
+                {item.marcoSuperior && (
+                  <span className="text-[8px] font-bold text-secondary uppercase bg-surface-container px-2 py-0.5 rounded font-space">
+                    Marco Sup.
+                  </span>
+                )}
+                {item.bisagras && (
+                  <span className="text-[8px] font-bold text-secondary uppercase bg-surface-container px-2 py-0.5 rounded font-space">
+                    Apertura: Derecha
+                  </span>
+                )}
+                {item.porteroAutomatico && (
+                  <span className="text-[8px] font-bold text-secondary uppercase bg-surface-container px-2 py-0.5 rounded font-space">
+                    Portero Auto.
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="h-px bg-outline-variant/20 pt-1" />
+
+        {/* Totals Summary */}
+        <div className="flex justify-between items-center text-xs font-space pt-1">
+          <span className="text-secondary font-black uppercase tracking-wider">Subtotal</span>
+          <span className="font-bold text-on-surface">{(quote.total / 1.21).toFixed(2)} €</span>
+        </div>
+        <div className="flex justify-between items-center text-xs font-space">
+          <span className="text-secondary font-black uppercase tracking-wider">I.V.A. (21%)</span>
+          <span className="font-bold text-on-surface">{(quote.total - (quote.total / 1.21)).toFixed(2)} €</span>
+        </div>
+        <div className="flex justify-between items-center text-sm font-space pt-1.5 border-t border-dashed border-outline-variant/30">
+          <span className="text-on-surface font-black uppercase tracking-wider">Total Presupuestado</span>
+          <span className="text-base font-black text-primary">{quote.total.toFixed(2)} €</span>
+        </div>
+      </div>
+
       {/* Share / Action Buttons */}
       <div className="space-y-3">
         <span className="text-[10px] uppercase tracking-widest text-secondary font-bold block">Compartir o Descargar</span>

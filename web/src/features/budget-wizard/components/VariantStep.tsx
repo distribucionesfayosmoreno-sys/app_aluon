@@ -26,7 +26,7 @@ export const VariantStep = ({ model, doorType, bisagras, onSelect, onBack }: Pro
       image: isTwoLeaves
         ? '/ideas/aluon/images/abatible%20dos%20hojas%20derecha.jpg'
         : '/ideas/aluon/images/derecha.jpg',
-      imgClass: 'scale-[1.35] mix-blend-multiply'
+      imgClass: 'scale-[1.65] mix-blend-multiply'
     }
   ];
 
