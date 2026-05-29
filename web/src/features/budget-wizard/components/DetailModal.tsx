@@ -101,7 +101,7 @@ export const DetailModal = ({ isOpen, onClose, items }: Props) => {
                       src={getOpeningImage(item.doorType, item.bisagras) || ''}
                       alt="Apertura"
                       className={`max-h-[80%] max-w-[85%] object-contain relative z-10 ${
-                        item.bisagras ? 'scale-[1.65] mix-blend-multiply' : ''
+                        item.bisagras ? 'transform scale-[1.65] mix-blend-multiply' : ''
                       }`}
                     />
                     <div className="absolute bottom-1 right-2 text-[8px] uppercase tracking-widest text-secondary font-space z-10">

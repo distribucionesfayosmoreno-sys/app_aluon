@@ -10,7 +10,7 @@ type Props = {
 const structures = [
   { id: 'puerta', label: 'Puerta', imageLabel: 'Puerta', category: 'PUERTA_PASO', type: 'PEATONAL' },
   { id: 'valla', label: 'Valla', imageLabel: 'Valla', category: 'VALLA', type: 'VALLA' },
-  { id: 'corredera', label: 'Puerta Corredera', imageLabel: 'Puerta Corredera', category: 'PUERTA_PASO', type: 'CORREDERA' },
+  { id: 'corredera', label: 'Puerta Corredera', imageLabel: 'Puerta Corredera', category: 'PUERTA_GARAJE', type: 'CORREDERA' },
   { id: 'abatible_una', label: 'Puerta Abatible Una Hoja', imageLabel: 'Puerta Abatible Una Hoja', category: 'PUERTA_PASO', type: 'ABATIBLE_UNA' },
   { id: 'abatible_dos', label: 'Puerta Abatible Dos Hojas', imageLabel: 'Puerta Abatible Dos Hojas', category: 'PUERTA_PASO', type: 'ABATIBLE_DOS' }
 ];
