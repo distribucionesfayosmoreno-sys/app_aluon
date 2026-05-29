@@ -6,6 +6,37 @@ type Props = {
   items: QuoteItemDraft[];
 };
 
+const getStructureImageLabel = (doorType: string): string => {
+  switch (doorType) {
+    case 'PEATONAL': return 'Puerta';
+    case 'VALLA': return 'Valla';
+    case 'CORREDERA': return 'Puerta Corredera';
+    case 'ABATIBLE_UNA': return 'Puerta Abatible Una Hoja';
+    case 'ABATIBLE_DOS': return 'Puerta Abatible Dos Hojas';
+    default: return 'Puerta';
+  }
+};
+
+const getProductImage = (modelo: string, doorType: string) => {
+  const modelCamel = modelo.charAt(0).toUpperCase() + modelo.slice(1).toLowerCase();
+  const label = getStructureImageLabel(doorType);
+  return `/ideas/aluon/images/Modelo ${modelCamel} - ${label}.png`;
+};
+
+const getOpeningImage = (doorType: string, bisagras: boolean) => {
+  if (doorType === 'VALLA') return null;
+  const isTwoLeaves = doorType === 'ABATIBLE_DOS';
+  if (!bisagras) {
+    return isTwoLeaves
+      ? '/ideas/aluon/images/abatible dos hojas izquierda.avif'
+      : '/ideas/aluon/images/izquierda.avif';
+  } else {
+    return isTwoLeaves
+      ? '/ideas/aluon/images/abatible dos hojas derecha.jpg'
+      : '/ideas/aluon/images/derecha.jpg';
+  }
+};
+
 const yesNo = (val: boolean) => (val ? "Sí" : "No");
 
 export const DetailModal = ({ isOpen, onClose, items }: Props) => {
@@ -28,13 +59,59 @@ export const DetailModal = ({ isOpen, onClose, items }: Props) => {
             <span className="text-xl font-bold">×</span>
           </button>
         </header>
-
+ 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-5 space-y-6">
           {items.map((item, idx) => (
             <div key={idx} className="border-b border-outline-variant/10 pb-5 last:border-0 last:pb-0 space-y-4">
               <div className="text-[10px] font-black uppercase tracking-wider text-primary">
                 Puerta #{idx + 1} — {item.productCategory.replace('_', ' ')}
+              </div>
+
+              {/* Visual Preview Cards */}
+              <div className="grid grid-cols-2 gap-3">
+                {/* Product structure image card */}
+                <div className="relative h-24 bg-white border border-outline-variant/25 rounded-xl overflow-hidden flex flex-col items-center justify-center p-2 shadow-sm">
+                  <img
+                    src={getProductImage(item.doorModel, item.doorType)}
+                    alt={item.doorType}
+                    className="max-h-full max-w-full object-contain"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('Modelo Bisel')) {
+                        const label = getStructureImageLabel(item.doorType);
+                        target.src = `/ideas/aluon/images/Modelo Bisel - ${label}.png`;
+                      }
+                    }}
+                  />
+                  <div className="absolute bottom-1 right-2 text-[8px] uppercase tracking-widest text-secondary font-space">
+                    Estructura
+                  </div>
+                </div>
+
+                {/* Opening image card */}
+                {item.doorType !== 'VALLA' ? (
+                  <div className="relative h-24 bg-white border border-outline-variant/25 rounded-xl overflow-hidden flex flex-col items-center justify-center p-2 shadow-sm">
+                    <img
+                      src="/assets/template.png"
+                      alt="Template"
+                      className="absolute inset-0 w-full h-full object-cover opacity-60"
+                    />
+                    <img
+                      src={getOpeningImage(item.doorType, item.bisagras) || ''}
+                      alt="Apertura"
+                      className="max-h-[80%] max-w-[85%] object-contain relative z-10"
+                    />
+                    <div className="absolute bottom-1 right-2 text-[8px] uppercase tracking-widest text-secondary font-space z-10">
+                      Apertura
+                    </div>
+                  </div>
+                ) : (
+                  <div className="h-24 bg-surface-container/50 border border-outline-variant/20 rounded-xl flex flex-col items-center justify-center p-2 text-center">
+                    <span className="material-symbols-outlined text-secondary text-base">block</span>
+                    <span className="text-[8px] uppercase tracking-wider text-secondary font-space mt-1">Sin apertura</span>
+                  </div>
+                )}
               </div>
 
               {/* Data Table */}

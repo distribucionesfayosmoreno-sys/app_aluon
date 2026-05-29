@@ -49,6 +49,7 @@ export const useBudgetWizard = (initialModelId?: string | null) => {
 
   const [savedItems, setSavedItems] = useState<QuoteItemDraft[]>([]);
   const [quote, setQuote] = useState<QuoteResponse | null>(null);
+  const [postFinalizeAction, setPostFinalizeAction] = useState<'EMAIL' | 'WHATSAPP' | 'VIEW' | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -242,6 +243,7 @@ export const useBudgetWizard = (initialModelId?: string | null) => {
     setMarcoSuperior(defaultBooleans.marcoSuperior);
     setBisagras(defaultBooleans.bisagras);
     setPorteroAutomatico(defaultBooleans.porteroAutomatico);
+    setPostFinalizeAction(null);
   };
 
   const addCurrentItem = () => {
@@ -293,7 +295,13 @@ export const useBudgetWizard = (initialModelId?: string | null) => {
     setStep("MEDIDAS");
   };
 
-  const finalize = async () => {
+  const finalize = async (action?: 'EMAIL' | 'WHATSAPP' | 'VIEW') => {
+    if (action) {
+      setPostFinalizeAction(action);
+    } else {
+      setPostFinalizeAction(null);
+    }
+
     const customerId = getAuth()?.customerId;
     if (!customerId) {
       setError("No se pudo identificar tu cuenta.");
@@ -373,6 +381,7 @@ export const useBudgetWizard = (initialModelId?: string | null) => {
     submitting,
     error,
     quote,
+    postFinalizeAction,
     models,
     doorProducts,
     variants,

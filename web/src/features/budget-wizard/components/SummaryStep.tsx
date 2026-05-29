@@ -20,6 +20,37 @@ type Props = {
 
 const yesNo = (val: boolean) => (val ? 'Sí' : 'No');
 
+const getStructureImageLabel = (doorType: string): string => {
+  switch (doorType) {
+    case 'PEATONAL': return 'Puerta';
+    case 'VALLA': return 'Valla';
+    case 'CORREDERA': return 'Puerta Corredera';
+    case 'ABATIBLE_UNA': return 'Puerta Abatible Una Hoja';
+    case 'ABATIBLE_DOS': return 'Puerta Abatible Dos Hojas';
+    default: return 'Puerta';
+  }
+};
+
+const getProductImage = (modelo: string, doorType: string) => {
+  const modelCamel = modelo.charAt(0).toUpperCase() + modelo.slice(1).toLowerCase();
+  const label = getStructureImageLabel(doorType);
+  return `/ideas/aluon/images/Modelo ${modelCamel} - ${label}.png`;
+};
+
+const getOpeningImage = (doorType: string, bisagras: boolean) => {
+  if (doorType === 'VALLA') return null;
+  const isTwoLeaves = doorType === 'ABATIBLE_DOS';
+  if (!bisagras) {
+    return isTwoLeaves
+      ? '/ideas/aluon/images/abatible dos hojas izquierda.avif'
+      : '/ideas/aluon/images/izquierda.avif';
+  } else {
+    return isTwoLeaves
+      ? '/ideas/aluon/images/abatible dos hojas derecha.jpg'
+      : '/ideas/aluon/images/derecha.jpg';
+  }
+};
+
 export const SummaryStep = ({
   model,
   product,
@@ -53,6 +84,52 @@ export const SummaryStep = ({
           <span className="material-symbols-outlined text-sm">arrow_back</span>
           Volver
         </button>
+      </div>
+
+      {/* Visual Preview Cards */}
+      <div className="grid grid-cols-2 gap-4">
+        {/* Product structure image card */}
+        <div className="relative h-32 bg-white border border-outline-variant/25 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-3 shadow-sm">
+          <img
+            src={getProductImage(model.modelo, variant.variante)}
+            alt={variant.variante}
+            className="max-h-full max-w-full object-contain"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (!target.src.includes('Modelo Bisel')) {
+                const label = getStructureImageLabel(variant.variante);
+                target.src = `/ideas/aluon/images/Modelo Bisel - ${label}.png`;
+              }
+            }}
+          />
+          <div className="absolute bottom-2 right-3 text-[9px] uppercase tracking-widest text-secondary font-space">
+            Estructura
+          </div>
+        </div>
+
+        {/* Opening image card */}
+        {variant.variante !== 'VALLA' ? (
+          <div className="relative h-32 bg-white border border-outline-variant/25 rounded-2xl overflow-hidden flex flex-col items-center justify-center p-3 shadow-sm">
+            <img
+              src="/assets/template.png"
+              alt="Template"
+              className="absolute inset-0 w-full h-full object-cover opacity-60"
+            />
+            <img
+              src={getOpeningImage(variant.variante, bisagras) || ''}
+              alt="Sentido de Apertura"
+              className="max-h-[80%] max-w-[85%] object-contain relative z-10"
+            />
+            <div className="absolute bottom-2 right-3 text-[9px] uppercase tracking-widest text-secondary font-space z-10">
+              Apertura
+            </div>
+          </div>
+        ) : (
+          <div className="h-32 bg-surface-container/50 border border-outline-variant/20 rounded-2xl flex flex-col items-center justify-center p-3 text-center">
+            <span className="material-symbols-outlined text-secondary text-lg">block</span>
+            <span className="text-[9px] uppercase tracking-wider text-secondary font-space mt-1">Sin apertura</span>
+          </div>
+        )}
       </div>
 
       <div className="bg-surface-container rounded-2xl p-4 border border-outline-variant/20 space-y-4 text-xs text-on-surface">

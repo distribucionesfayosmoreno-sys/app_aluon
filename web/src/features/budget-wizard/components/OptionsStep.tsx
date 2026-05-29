@@ -10,6 +10,7 @@ type Props = {
   onEditDoor: (index: number) => void;
   onReset: () => void;
   onFinalize: () => void;
+  onFinalizeAction?: (action: 'EMAIL' | 'WHATSAPP' | 'VIEW') => void;
   submitting: boolean;
 };
 
@@ -21,6 +22,7 @@ export const OptionsStep = ({
   onEditDoor,
   onReset,
   onFinalize,
+  onFinalizeAction,
   submitting,
 }: Props) => {
   const [detailOpen, setDetailOpen] = useState(false);
@@ -52,6 +54,38 @@ export const OptionsStep = ({
         >
           <span className="material-symbols-outlined text-sm">save</span>
           {submitting ? 'Guardando...' : 'GUARDAR PRESUPUESTO'}
+        </button>
+
+        {/* Action Buttons underneath save button */}
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            type="button"
+            disabled={submitting}
+            onClick={() => onFinalizeAction?.('EMAIL')}
+            className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-outline-variant bg-surface text-on-surface hover:bg-surface-container font-black text-[10px] uppercase tracking-wider transition-colors shadow-sm"
+          >
+            <span className="material-symbols-outlined text-sm text-primary">mail</span>
+            Enviar por Mail
+          </button>
+          <button
+            type="button"
+            disabled={submitting}
+            onClick={() => onFinalizeAction?.('WHATSAPP')}
+            className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-outline-variant bg-surface text-on-surface hover:bg-surface-container font-black text-[10px] uppercase tracking-wider transition-colors shadow-sm"
+          >
+            <span className="material-symbols-outlined text-sm text-green-600">chat</span>
+            WhatsApp
+          </button>
+        </div>
+
+        <button
+          type="button"
+          disabled={submitting}
+          onClick={() => onFinalizeAction?.('VIEW')}
+          className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl border border-outline-variant text-on-surface font-black text-xs uppercase tracking-widest bg-surface hover:bg-surface-container transition-colors shadow-sm"
+        >
+          <span className="material-symbols-outlined text-sm text-blue-500">visibility</span>
+          Ver presupuesto
         </button>
 
         <button

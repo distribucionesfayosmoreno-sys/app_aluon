@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { QuoteResponse } from '../BudgetWizard.types';
 
 type Props = {
   quote: QuoteResponse;
+  postFinalizeAction: 'EMAIL' | 'WHATSAPP' | 'VIEW' | null;
   onNew: () => void;
   onSendChannel: (channel: 'EMAIL' | 'WHATSAPP' | 'BOTH') => Promise<void>;
   submitting: boolean;
 };
 
-export const DoneStep = ({ quote, onNew, onSendChannel, submitting }: Props) => {
+export const DoneStep = ({ quote, postFinalizeAction, onNew, onSendChannel, submitting }: Props) => {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [targetEmail, setTargetEmail] = useState(quote.contactEmail || '');
   const [sentStatus, setSentStatus] = useState<string | null>(null);
@@ -37,6 +38,19 @@ export const DoneStep = ({ quote, onNew, onSendChannel, submitting }: Props) => 
       alert('Error al enviar por WhatsApp.');
     }
   };
+
+  useEffect(() => {
+    if (!postFinalizeAction) return;
+
+    if (postFinalizeAction === 'EMAIL') {
+      setEmailModalOpen(true);
+    } else if (postFinalizeAction === 'WHATSAPP') {
+      handleSendWhatsapp();
+    } else if (postFinalizeAction === 'VIEW') {
+      window.print();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [postFinalizeAction]);
 
   return (
     <div className="space-y-6">

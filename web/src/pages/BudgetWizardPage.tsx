@@ -139,6 +139,7 @@ export default function BudgetWizardPage() {
               onEditDoor={wizard.editItem}
               onReset={wizard.reset}
               onFinalize={wizard.finalize}
+              onFinalizeAction={(action) => wizard.finalize(action)}
               submitting={wizard.submitting}
             />
           )}
@@ -146,6 +147,7 @@ export default function BudgetWizardPage() {
           {wizard.step === 'FINALIZADO' && wizard.quote && (
             <DoneStep
               quote={wizard.quote}
+              postFinalizeAction={wizard.postFinalizeAction}
               onNew={wizard.reset}
               onSendChannel={wizard.sendQuoteChannel}
               submitting={wizard.submitting}
