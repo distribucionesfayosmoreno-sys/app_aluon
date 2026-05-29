@@ -4,6 +4,7 @@ import { useBudgetWizard } from "../features/budget-wizard/useBudgetWizard";
 import { ModelStep } from "../features/budget-wizard/components/ModelStep";
 import { ProductStep } from "../features/budget-wizard/components/ProductStep";
 import { ColorStep } from "../features/budget-wizard/components/ColorStep";
+import { VariantStep } from "../features/budget-wizard/components/VariantStep";
 import { MeasurementsStep } from "../features/budget-wizard/components/MeasurementsStep";
 import { SummaryStep } from "../features/budget-wizard/components/SummaryStep";
 import { OptionsStep } from "../features/budget-wizard/components/OptionsStep";
@@ -61,7 +62,26 @@ export default function BudgetWizardPage() {
               onColorChange={wizard.setColor}
               onPrimerChange={wizard.setPrimerRequired}
               onBack={() => wizard.setStep('PRODUCTO')}
-              onNext={() => wizard.setStep('MEDIDAS')}
+              onNext={() => {
+                if (wizard.selectedProduct?.producto === 'VALLA') {
+                  wizard.setStep('MEDIDAS');
+                } else {
+                  wizard.setStep('APERTURA');
+                }
+              }}
+            />
+          )}
+
+          {wizard.step === 'APERTURA' && wizard.selectedModel && wizard.selectedVariant && (
+            <VariantStep
+              model={wizard.selectedModel}
+              doorType={wizard.selectedVariant.variante}
+              bisagras={wizard.bisagras}
+              onSelect={(val) => {
+                wizard.setBisagras(val);
+                wizard.setStep('MEDIDAS');
+              }}
+              onBack={() => wizard.setStep('COLOR')}
             />
           )}
 
@@ -72,16 +92,20 @@ export default function BudgetWizardPage() {
               floorClearanceMm={wizard.floorClearanceMm}
               larguero={wizard.larguero}
               marcoSuperior={wizard.marcoSuperior}
-              bisagras={wizard.bisagras}
               porteroAutomatico={wizard.porteroAutomatico}
               onWidthChange={wizard.setWidthMm}
               onHeightChange={wizard.setHeightMm}
               onFloorClearanceChange={wizard.setFloorClearanceMm}
               onLargueroChange={wizard.setLarguero}
               onMarcoSuperiorChange={wizard.setMarcoSuperior}
-              onBisagrasChange={wizard.setBisagras}
               onPorteroAutomaticoChange={wizard.setPorteroAutomatico}
-              onBack={() => wizard.setStep('COLOR')}
+              onBack={() => {
+                if (wizard.selectedProduct?.producto === 'VALLA') {
+                  wizard.setStep('COLOR');
+                } else {
+                  wizard.setStep('APERTURA');
+                }
+              }}
               onNext={() => wizard.setStep('RESUMEN')}
             />
           )}

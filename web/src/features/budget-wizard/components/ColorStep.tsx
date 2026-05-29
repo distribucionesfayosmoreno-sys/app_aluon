@@ -28,7 +28,7 @@ export const ColorStep = ({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 3 de 4</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 3 de 5</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Color & Imprimación</h3>
         </div>
         <button

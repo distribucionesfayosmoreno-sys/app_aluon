@@ -1,57 +1,44 @@
-import type { CatalogModel, CatalogVariant } from '../BudgetWizard.types';
+import type { CatalogModel } from '../BudgetWizard.types';
 
 type Props = {
   model: CatalogModel;
-  variants: CatalogVariant[];
-  loading: boolean;
+  doorType: string;
+  bisagras: boolean;
+  onSelect: (val: boolean) => void;
   onBack: () => void;
-  onSelect: (variant: CatalogVariant) => void;
 };
 
-const getVariantLabelName = (variante: string) => {
-  switch (variante) {
-    case 'PEATONAL': return 'Puerta';
-    case 'CORREDERA': return 'Puerta Corredera';
-    case 'ABATIBLE_UNA': return 'Puerta Abatible Una Hoja';
-    case 'ABATIBLE_DOS': return 'Puerta Abatible Dos Hojas';
-    case 'VALLA': return 'Valla';
-    default: return 'Puerta';
-  }
-};
+export const VariantStep = ({ model, doorType, bisagras, onSelect, onBack }: Props) => {
+  const isTwoLeaves = doorType === 'ABATIBLE_DOS';
 
-const mapVariantLabel = (variante: string) => {
-  switch (variante) {
-    case 'PEATONAL': return 'Puerta';
-    case 'CORREDERA': return 'Puerta Corredera';
-    case 'ABATIBLE_UNA': return 'Puerta Abatible Una Hoja';
-    case 'ABATIBLE_DOS': return 'Puerta Abatible Dos Hojas';
-    case 'VALLA': return 'Valla';
-    default: return variante.replace('_', ' ');
-  }
-};
-
-const getVariantImage = (modelo: string, variante: string) => {
-  const label = getVariantLabelName(variante);
-  const modelCamel = modelo.charAt(0).toUpperCase() + modelo.slice(1).toLowerCase();
-  return `/ideas/aluon/images/Modelo ${modelCamel} - ${label}.png`;
-};
-
-export const VariantStep = ({ model, variants, loading, onBack, onSelect }: Props) => {
-  if (loading) {
-    return <div className="text-xs text-secondary animate-pulse py-8 text-center font-body">Cargando tipos de apertura...</div>;
-  }
+  const options = [
+    {
+      value: false,
+      label: 'Izquierda',
+      image: isTwoLeaves
+        ? '/ideas/aluon/images/abatible dos hojas izquierda.avif'
+        : '/ideas/aluon/images/izquierda.avif'
+    },
+    {
+      value: true,
+      label: 'Derecha',
+      image: isTwoLeaves
+        ? '/ideas/aluon/images/abatible dos hojas derecha.jpg'
+        : '/ideas/aluon/images/derecha.jpg'
+    }
+  ];
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 4 de 5</span>
-          <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5 font-space">Tipo de Apertura</h3>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold font-space">Paso 4 de 5</span>
+          <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5 font-space">Forma de Apertura</h3>
         </div>
         <button
           type="button"
           onClick={onBack}
-          className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-1 active:scale-95 transition-transform"
+          className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-1 active:scale-95 transition-transform font-space"
         >
           <span className="material-symbols-outlined text-sm">arrow_back</span>
           Volver
@@ -59,47 +46,58 @@ export const VariantStep = ({ model, variants, loading, onBack, onSelect }: Prop
       </div>
 
       <p className="text-xs text-secondary font-body">
-        Elige cómo se abrirá la puerta o cerramiento para el modelo **{model.modelo}**:
+        Selecciona el sentido de apertura o lado de bisagras para tu cerramiento modelo **{model.modelo}**:
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {variants.map(variant => (
-          <button
-            key={variant.id}
-            type="button"
-            onClick={() => onSelect(variant)}
-            className="group relative flex flex-col justify-end text-left bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-primary transition-all duration-200 active:scale-[0.98] shadow-sm h-64 w-full"
-          >
-            {/* Image container serving as full background */}
-            <div className="absolute inset-0 w-full h-full bg-white flex items-center justify-center overflow-hidden">
+        {options.map(opt => {
+          const isSelected = bisagras === opt.value;
+          return (
+            <button
+              key={opt.label}
+              type="button"
+              onClick={() => onSelect(opt.value)}
+              className={`group relative flex flex-col justify-between text-left bg-white rounded-2xl overflow-hidden border transition-all duration-200 active:scale-[0.98] shadow-sm h-64 w-full ${
+                isSelected
+                  ? 'border-primary ring-2 ring-primary/20'
+                  : 'border-slate-200 hover:border-primary'
+              }`}
+            >
+              {/* Template background */}
               <img
-                src={getVariantImage(model.modelo, variant.variante)}
-                alt={variant.variante}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  const label = getVariantLabelName(variant.variante);
-                  if (!target.src.includes('Modelo Bisel')) {
-                    target.src = `/ideas/aluon/images/Modelo Bisel - ${label}.png`;
-                  }
-                }}
+                src="/assets/template.png"
+                alt="Template"
+                className="absolute inset-0 w-full h-full object-cover"
               />
-            </div>
 
-            {/* Text Overlay */}
-            <div className="relative z-10 p-4 pt-10 space-y-1 bg-gradient-to-t from-white via-white/90 to-transparent w-full">
-              <div className="flex items-center justify-between">
-                <span className="text-base font-black text-on-surface tracking-wider uppercase font-space">
-                  {mapVariantLabel(variant.variante)}
-                </span>
+              {/* Content Container */}
+              <div className="relative z-10 flex flex-col justify-between h-full w-full">
+                {/* Image Container (top part, centered, no overlap with text) */}
+                <div className="flex-1 flex items-center justify-center p-4 min-h-0">
+                  <img
+                    src={opt.image}
+                    alt={opt.label}
+                    className="max-h-[130px] max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Text Overlay */}
+                <div className="p-4 pt-10 space-y-1 bg-gradient-to-t from-white via-white/90 to-transparent w-full">
+                  <div className="flex items-center justify-between">
+                    <span className="text-base font-black text-on-surface tracking-wider uppercase font-space">
+                      Apertura {opt.label}
+                    </span>
+                  </div>
+                  <p className="text-[10px] leading-relaxed text-secondary font-body">
+                    Sentido de apertura {opt.label.toLowerCase()} según especificación.
+                  </p>
+                </div>
               </div>
-              <p className="text-[10px] leading-relaxed text-secondary font-body">
-                Especificaciones de cerramientos de aluminio y acabados de alta calidad.
-              </p>
-            </div>
-          </button>
-        ))}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 };
+

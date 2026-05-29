@@ -32,7 +32,7 @@ export const ModelStep = ({ models, loading, onSelect }: Props) => {
   return (
     <div className="space-y-4">
       <div className="text-center md:text-left">
-        <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 1 de 4</span>
+        <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 1 de 5</span>
         <h3 className="font-headline font-bold text-2xl text-on-surface mt-1">Selecciona un modelo</h3>
         <p className="text-xs text-secondary mt-1 font-body">
           Elige la línea estética para tu puerta.

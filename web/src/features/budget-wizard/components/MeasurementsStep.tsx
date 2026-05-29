@@ -1,37 +1,35 @@
 
 type Props = {
+  stepText?: string;
   widthMm: number;
   heightMm: number;
   floorClearanceMm: number;
   larguero: boolean;
   marcoSuperior: boolean;
-  bisagras: boolean;
   porteroAutomatico: boolean;
   onWidthChange: (val: number) => void;
   onHeightChange: (val: number) => void;
   onFloorClearanceChange: (val: number) => void;
   onLargueroChange: (val: boolean) => void;
   onMarcoSuperiorChange: (val: boolean) => void;
-  onBisagrasChange: (val: boolean) => void;
   onPorteroAutomaticoChange: (val: boolean) => void;
   onBack: () => void;
   onNext: () => void;
 };
 
 export const MeasurementsStep = ({
+  stepText,
   widthMm,
   heightMm,
   floorClearanceMm,
   larguero,
   marcoSuperior,
-  bisagras,
   porteroAutomatico,
   onWidthChange,
   onHeightChange,
   onFloorClearanceChange,
   onLargueroChange,
   onMarcoSuperiorChange,
-  onBisagrasChange,
   onPorteroAutomaticoChange,
   onBack,
   onNext,
@@ -49,7 +47,7 @@ export const MeasurementsStep = ({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Paso 4 de 4</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold">{stepText || 'Paso 5 de 5'}</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5">Dimensiones & Opciones</h3>
         </div>
         <button
@@ -139,15 +137,6 @@ export const MeasurementsStep = ({
               />
             </label>
 
-            <label className="flex items-center justify-between p-3 bg-surface-container-high rounded-xl cursor-pointer">
-              <span className="text-xs text-on-surface">Bisagras reforzadas</span>
-              <input
-                type="checkbox"
-                checked={bisagras}
-                onChange={e => onBisagrasChange(e.target.checked)}
-                className="w-4 h-4 rounded text-primary focus:ring-primary"
-              />
-            </label>
 
             <label className="flex items-center justify-between p-3 bg-surface-container-high rounded-xl cursor-pointer">
               <span className="text-xs text-on-surface">Portero automático</span>

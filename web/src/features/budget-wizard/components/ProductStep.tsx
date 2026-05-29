@@ -29,7 +29,7 @@ export const ProductStep = ({ model, loading, onBack, onSelect }: Props) => {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-widest text-primary font-bold font-space">Paso 2 de 4</span>
+          <span className="text-[10px] uppercase tracking-widest text-primary font-bold font-space">Paso 2 de 5</span>
           <h3 className="font-headline font-bold text-2xl text-on-surface mt-0.5 font-space">Tipo de estructura</h3>
         </div>
         <button
