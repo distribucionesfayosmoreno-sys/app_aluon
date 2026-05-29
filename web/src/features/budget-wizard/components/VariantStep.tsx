@@ -16,14 +16,14 @@ export const VariantStep = ({ model, doorType, bisagras, onSelect, onBack }: Pro
       value: false,
       label: 'Izquierda',
       image: isTwoLeaves
-        ? '/ideas/aluon/images/abatible dos hojas izquierda.avif'
+        ? '/ideas/aluon/images/abatible%20dos%20hojas%20izquierda.avif'
         : '/ideas/aluon/images/izquierda.avif'
     },
     {
       value: true,
       label: 'Derecha',
       image: isTwoLeaves
-        ? '/ideas/aluon/images/abatible dos hojas derecha.jpg'
+        ? '/ideas/aluon/images/abatible%20dos%20hojas%20derecha.jpg'
         : '/ideas/aluon/images/derecha.jpg'
     }
   ];
@@ -57,7 +57,7 @@ export const VariantStep = ({ model, doorType, bisagras, onSelect, onBack }: Pro
               key={opt.label}
               type="button"
               onClick={() => onSelect(opt.value)}
-              className={`group relative flex flex-col justify-between text-left bg-white rounded-2xl overflow-hidden border transition-all duration-200 active:scale-[0.98] shadow-sm h-64 w-full ${
+              className={`group relative flex flex-col justify-between text-left bg-white rounded-2xl overflow-hidden border transition-all duration-200 active:scale-[0.98] shadow-sm h-44 w-full ${
                 isSelected
                   ? 'border-primary ring-2 ring-primary/20'
                   : 'border-slate-200 hover:border-primary'
@@ -73,22 +73,22 @@ export const VariantStep = ({ model, doorType, bisagras, onSelect, onBack }: Pro
               {/* Content Container */}
               <div className="relative z-10 flex flex-col justify-between h-full w-full">
                 {/* Image Container (top part, centered, no overlap with text) */}
-                <div className="flex-1 flex items-center justify-center p-4 min-h-0">
+                <div className="flex-1 flex items-center justify-center p-3 min-h-0">
                   <img
                     src={opt.image}
                     alt={opt.label}
-                    className="max-h-[130px] max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-500"
+                    className="max-h-[85px] max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
                 {/* Text Overlay */}
-                <div className="p-4 pt-10 space-y-1 bg-gradient-to-t from-white via-white/90 to-transparent w-full">
+                <div className="p-3 pt-6 space-y-0.5 bg-gradient-to-t from-white via-white/95 to-transparent w-full">
                   <div className="flex items-center justify-between">
-                    <span className="text-base font-black text-on-surface tracking-wider uppercase font-space">
+                    <span className="text-sm font-black text-on-surface tracking-wider uppercase font-space">
                       Apertura {opt.label}
                     </span>
                   </div>
-                  <p className="text-[10px] leading-relaxed text-secondary font-body">
+                  <p className="text-[9px] leading-relaxed text-secondary font-body">
                     Sentido de apertura {opt.label.toLowerCase()} según especificación.
                   </p>
                 </div>

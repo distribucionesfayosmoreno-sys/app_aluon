@@ -28,11 +28,11 @@ const getOpeningImage = (doorType: string, bisagras: boolean) => {
   const isTwoLeaves = doorType === 'ABATIBLE_DOS';
   if (!bisagras) {
     return isTwoLeaves
-      ? '/ideas/aluon/images/abatible dos hojas izquierda.avif'
+      ? '/ideas/aluon/images/abatible%20dos%20hojas%20izquierda.avif'
       : '/ideas/aluon/images/izquierda.avif';
   } else {
     return isTwoLeaves
-      ? '/ideas/aluon/images/abatible dos hojas derecha.jpg'
+      ? '/ideas/aluon/images/abatible%20dos%20hojas%20derecha.jpg'
       : '/ideas/aluon/images/derecha.jpg';
   }
 };
