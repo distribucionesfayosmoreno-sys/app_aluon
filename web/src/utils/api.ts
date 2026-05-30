@@ -2,8 +2,8 @@ export const getApiUrl = (): string => {
   const envApiUrl = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
   let resolvedUrl = envApiUrl.trim();
 
-  // If running locally on localhost/127.0.0.1 and no VITE_API_URL is configured, use local backend port
-  if (!resolvedUrl && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")) {
+  // Always use local backend if running on localhost, regardless of VITE_API_URL
+  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
     return "http://localhost:8080";
   }
 

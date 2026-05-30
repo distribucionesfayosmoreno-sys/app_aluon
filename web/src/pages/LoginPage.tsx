@@ -31,7 +31,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const isDev = import.meta.env.DEV || window.location.hostname === "localhost" || getApiUrl().includes("desarrollo");
+    const isDev = import.meta.env.DEV || window.location.hostname === "localhost" || window.location.hostname === "app-aluon-unqc.vercel.app" || getApiUrl().includes("desarrollo");
 
     if (!form.email.trim()) {
       setErrorMessage("El correo electrónico es obligatorio.");
