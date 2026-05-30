@@ -60,11 +60,11 @@ export default {
       },
 
       fontFamily: {
-        headline: ["Space Grotesk"],
+        headline: ["Nexa"],
         body: ["Sora"],
         label: ["Sora"],
         inter: ["Inter"],
-        space: ["Space Grotesk"],
+        space: ["Nexa"],
         sora: ["Sora"],
       },
       borderRadius: {
