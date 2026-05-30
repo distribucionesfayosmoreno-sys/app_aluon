@@ -1,4 +1,5 @@
 import type { QuoteItemDraft } from "../BudgetWizard.types";
+import { openingImagePath } from '../utils/openingImages';
 
 type Props = {
   isOpen: boolean;
@@ -36,6 +37,21 @@ export const DetailModal = ({ isOpen, onClose, items }: Props) => {
               <div className="text-[10px] font-black uppercase tracking-wider text-[#a92f32]">
                 Puerta #{idx + 1} — {item.productCategory.replace('_', ' ')}
               </div>
+
+              {item.doorType !== 'VALLA' && (
+                <div className="flex items-center justify-between gap-4">
+                  <div className="text-xs text-secondary">
+                    Apertura: <span className="font-bold text-on-surface">{item.bisagras ? 'Derecha' : 'Izquierda'}</span>
+                  </div>
+                  <div className="h-14 w-24 bg-white rounded-xl border border-outline-variant/25 overflow-hidden flex items-center justify-center">
+                    <img
+                      src={openingImagePath(item.doorType, item.bisagras ? 'RIGHT' : 'LEFT') ?? ''}
+                      alt="Apertura"
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                </div>
+              )}
 
               {/* Data Table */}
               <div className="bg-surface-container rounded-xl p-3 border border-outline-variant/20">
