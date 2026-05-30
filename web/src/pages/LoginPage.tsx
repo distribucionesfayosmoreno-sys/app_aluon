@@ -31,11 +31,13 @@ export default function LoginPage() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const isDev = import.meta.env.DEV || window.location.hostname === "localhost" || getApiUrl().includes("desarrollo");
+
     if (!form.email.trim()) {
       setErrorMessage("El correo electrónico es obligatorio.");
       return;
     }
-    if (!form.password.trim()) {
+    if (!isDev && !form.password.trim()) {
       setErrorMessage("La contraseña es obligatoria.");
       return;
     }
@@ -142,7 +144,7 @@ export default function LoginPage() {
                   autoComplete="current-password"
                   value={form.password}
                   onChange={handleChange("password")}
-                  placeholder="Contraseña"
+                  placeholder="Contraseña (opcional en DEV)"
                   aria-label="Contraseña"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
@@ -160,7 +162,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(169,47,50,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
+              className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(59,130,246,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
             >
               {status === "submitting" ? "Accediendo..." : "Iniciar sesión"}
             </button>
