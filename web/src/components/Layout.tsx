@@ -53,7 +53,7 @@ export default function Layout() {
             menu
           </button>
           <h1 className="text-xl font-black tracking-[-0.02em] text-on-surface font-headline">
-            <img alt="ALUON" className="h-6 md:h-7 w-auto" src="/assets/logo.png" />
+            <img alt="ALUON" className="h-10 md:h-12 w-auto" src="/assets/logo.png" />
           </h1>
         </div>
         <div className="flex items-center gap-6">
