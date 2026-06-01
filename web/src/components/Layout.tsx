@@ -1,4 +1,4 @@
-import { Outlet, Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, Link, useLocation, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { clearAuth, isAuthenticated } from "../utils/auth";
 import MobileMenuDrawer from "./MobileMenuDrawer";
@@ -17,7 +17,7 @@ function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
     <Link
       to={to}
       className={`font-inter text-[10px] uppercase tracking-widest font-bold transition-colors ${
-        isActive ? "text-primary scale-110" : "text-secondary hover:text-primary"
+        isActive ? "text-[#2563eb] scale-110" : "text-[#605b77] hover:text-[#2563eb]"
       }`}
     >
       {children}
@@ -29,30 +29,27 @@ export default function Layout() {
   const navigate = useNavigate();
   const [showLogout, setShowLogout] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
   if (!isAuthenticated()) {
     return <Navigate to="/login" replace />;
   }
-
   const handleLogout = () => {
     clearAuth();
     navigate("/login", { replace: true });
   };
-
   return (
     <div className="min-h-screen bg-surface text-on-surface">
-      <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-surface border-b border-outline-variant/20">
+      <header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#fcf9f8]">
         <div className="flex items-center gap-4">
           <button
             type="button"
-            className="md:hidden material-symbols-outlined text-secondary hover:text-primary cursor-pointer active:scale-95 duration-200"
+            className="md:hidden material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200"
             aria-label="Abrir menú"
             title="Abrir menú"
             onClick={() => setMenuOpen(true)}
           >
             menu
           </button>
-          <h1 className="text-xl font-black tracking-[-0.02em] text-on-surface font-headline">
+          <h1 className="text-xl font-black tracking-[-0.02em] text-[#1b1b1b] font-headline">
             <img alt="ALUON" className="h-10 md:h-12 w-auto" src="/assets/logo.png" />
           </h1>
         </div>
@@ -65,7 +62,7 @@ export default function Layout() {
           <button
             type="button"
             onClick={() => setShowLogout(true)}
-            className="material-symbols-outlined text-secondary hover:text-primary cursor-pointer active:scale-95 duration-200"
+            className="material-symbols-outlined text-[#605b77] cursor-pointer active:scale-95 duration-200"
             aria-label="Cerrar sesión"
             title="Cerrar sesión"
           >
@@ -93,7 +90,7 @@ export default function Layout() {
             aria-label="Confirmar cierre de sesión"
           >
             <div className="px-6 pt-6 pb-4">
-              <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Cuenta</div>
+              <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#2563eb]">Cuenta</div>
               <h3 className="font-headline font-black text-xl mt-2 text-on-surface">¿Cerrar sesión?</h3>
               <p className="text-sm text-secondary mt-2">
                 Perderás el acceso hasta volver a iniciar sesión.
@@ -109,7 +106,7 @@ export default function Layout() {
               </button>
               <button
                 type="button"
-                className="flex-1 h-11 rounded-full bg-gradient-to-br from-[#a92f32] to-[#8c2427] text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-95"
+                className="flex-1 h-11 rounded-full bg-gradient-to-br from-[#2563eb] to-[#1e40af] text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-95"
                 onClick={handleLogout}
               >
                 Cerrar sesión
@@ -121,4 +118,3 @@ export default function Layout() {
     </div>
   );
 }
-

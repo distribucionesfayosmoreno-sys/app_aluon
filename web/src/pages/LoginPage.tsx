@@ -31,13 +31,11 @@ export default function LoginPage() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const isDev = import.meta.env.DEV || window.location.hostname === "localhost" || window.location.hostname === "app-aluon-unqc.vercel.app" || getApiUrl().includes("desarrollo");
-
     if (!form.email.trim()) {
       setErrorMessage("El correo electrónico es obligatorio.");
       return;
     }
-    if (!isDev && !form.password.trim()) {
+    if (!form.password.trim()) {
       setErrorMessage("La contraseña es obligatoria.");
       return;
     }
@@ -75,10 +73,10 @@ export default function LoginPage() {
       className="min-h-screen bg-[var(--ag-background)] text-on-surface"
       style={{
         // Variables listas para inyectar la paleta corporativa (Antigravity theme tokens).
-        "--ag-primary": "var(--ag-primary, #3b82f6)",
-        "--ag-secondary": "var(--ag-secondary, #94a3b8)",
-        "--ag-background": "var(--ag-background, #020617)",
-        "--ag-surface": "var(--ag-surface, #0b0f19)",
+        "--ag-primary": "var(--ag-primary, #2563eb)",
+        "--ag-secondary": "var(--ag-secondary, #605b77)",
+        "--ag-background": "var(--ag-background, #fcf9f8)",
+        "--ag-surface": "var(--ag-surface, #ffffff)",
         "--ag-on-primary": "var(--ag-on-primary, #ffffff)",
       } as React.CSSProperties}
     >
@@ -144,7 +142,7 @@ export default function LoginPage() {
                   autoComplete="current-password"
                   value={form.password}
                   onChange={handleChange("password")}
-                  placeholder="Contraseña (opcional en DEV)"
+                  placeholder="Contraseña"
                   aria-label="Contraseña"
                   className="w-full bg-transparent text-sm text-on-surface placeholder:text-on-surface/40 focus:outline-none"
                 />
@@ -162,7 +160,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(59,130,246,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
+              className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(37,99,235,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
             >
               {status === "submitting" ? "Accediendo..." : "Iniciar sesión"}
             </button>

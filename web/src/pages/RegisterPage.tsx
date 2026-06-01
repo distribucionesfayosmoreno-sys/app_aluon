@@ -117,10 +117,10 @@ export default function RegisterPage() {
     <main
       className="min-h-screen bg-[var(--ag-background)] text-on-surface"
       style={{
-        "--ag-primary": "var(--ag-primary, #3b82f6)",
-        "--ag-secondary": "var(--ag-secondary, #94a3b8)",
-        "--ag-background": "var(--ag-background, #020617)",
-        "--ag-surface": "var(--ag-surface, #0b0f19)",
+        "--ag-primary": "var(--ag-primary, #2563eb)",
+        "--ag-secondary": "var(--ag-secondary, #605b77)",
+        "--ag-background": "var(--ag-background, #fcf9f8)",
+        "--ag-surface": "var(--ag-surface, #ffffff)",
         "--ag-on-primary": "var(--ag-on-primary, #ffffff)",
       } as React.CSSProperties}
     >
@@ -342,7 +342,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(169,47,50,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
+              className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(37,99,235,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
             >
               {status === "submitting" ? "Enviando solicitud..." : "Enviar solicitud"}
             </button>
