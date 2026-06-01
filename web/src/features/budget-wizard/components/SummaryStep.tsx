@@ -1,4 +1,5 @@
 import type { CatalogDoorProduct, CatalogModel, CatalogVariant } from '../BudgetWizard.types';
+import { openingImagePath } from '../utils/openingImages';
 
 type Props = {
   model: CatalogModel;
@@ -68,6 +69,9 @@ export const SummaryStep = ({
   onBack,
   onFinalize,
 }: Props) => {
+  const openingSide: 'LEFT' | 'RIGHT' = bisagras ? 'RIGHT' : 'LEFT';
+  const openingImage = openingImagePath(variant.variante, openingSide);
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -135,6 +139,19 @@ export const SummaryStep = ({
       </div>
 
       <div className="bg-surface-container rounded-2xl p-4 border border-outline-variant/20 space-y-4 text-xs text-on-surface">
+        {openingImage && (
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <div className="text-secondary font-medium">Vista de apertura</div>
+              <div className="font-bold text-on-surface">
+                {openingSide === 'LEFT' ? 'Izquierda' : 'Derecha'}
+              </div>
+            </div>
+            <div className="h-16 w-24 bg-white rounded-xl border border-outline-variant/25 overflow-hidden flex items-center justify-center">
+              <img src={openingImage} alt="Apertura" className="max-h-full max-w-full object-contain" />
+            </div>
+          </div>
+        )}
         <div className="flex justify-between py-1">
           <span className="text-secondary font-medium">Modelo</span>
           <span className="font-bold">{model.modelo}</span>

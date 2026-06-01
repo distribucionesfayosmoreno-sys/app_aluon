@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "npm -C web run dev -- --port 5173 --strictPort",
+    "build": "npm -C web run build",
+    "preview": "npm -C web run preview -- --port 5173 --strictPort",
+    "lint": "npm -C web run lint"
   },
   "devDependencies": {
     "vite": "^5.4.0"
