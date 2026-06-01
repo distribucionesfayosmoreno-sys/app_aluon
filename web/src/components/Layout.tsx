@@ -90,8 +90,8 @@ export default function Layout() {
             aria-label="Confirmar cierre de sesión"
           >
             <div className="px-6 pt-6 pb-4">
-              <div className="text-xs uppercase tracking-[0.3em] text-secondary font-bold">Cuenta</div>
-              <h3 className="font-headline font-bold text-xl mt-2">¿Cerrar sesión?</h3>
+              <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Cuenta</div>
+              <h3 className="font-headline font-black text-xl mt-2 text-on-surface">¿Cerrar sesión?</h3>
               <p className="text-sm text-secondary mt-2">
                 Perderás el acceso hasta volver a iniciar sesión.
               </p>
@@ -106,7 +106,7 @@ export default function Layout() {
               </button>
               <button
                 type="button"
-                className="flex-1 h-11 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-[0.2em]"
+                className="flex-1 h-11 rounded-full bg-gradient-to-br from-[#a92f32] to-[#8c2427] text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-95"
                 onClick={handleLogout}
               >
                 Cerrar sesión

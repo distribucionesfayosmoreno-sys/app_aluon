@@ -96,16 +96,24 @@ export default function ClientStatus() {
   );
 
   return (
-    <section className="bg-surface-container-low py-10 px-4 md:px-16">
+    <section className="bg-surface-container-low min-h-screen py-6 px-4 md:px-16">
       <div className="max-w-5xl mx-auto space-y-6">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+        <header className="bg-surface rounded-2xl p-5 border border-outline-variant/30 flex items-center justify-between shadow-sm">
           <div>
-            <p className="text-secondary mt-2 max-w-2xl">
-              Revisa el avance de tus solicitudes, presupuestos y producción. Si necesitas ajustar datos, contacta a tu
-              asesor antes de la validación.
-            </p>
+            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Estado</div>
+            <h2 className="font-headline font-black text-lg text-on-surface mt-0.5">Mis Solicitudes y Presupuestos</h2>
           </div>
-        </div>
+          <div className="hidden md:flex flex-col items-end select-none bg-surface-container border border-outline-variant/20 py-1 px-2.5 rounded-lg">
+            <span className="text-[9px] font-black tracking-[0.15em] text-[#a92f32]">ALUON</span>
+            <span className="text-[7px] font-semibold text-secondary uppercase tracking-wider animate-pulse" style={{ fontSize: '7px', lineHeight: '1.1' }}>Aluminio Soldado</span>
+          </div>
+        </header>
+
+        <div className="bg-surface rounded-3xl p-5 md:p-6 border border-outline-variant/20 shadow-md">
+          <p className="text-sm text-secondary mb-6 max-w-2xl">
+            Revisa el avance de tus solicitudes, presupuestos y producción. Si necesitas ajustar datos, contacta a tu
+            asesor antes de la validación.
+          </p>
 
         {state === "loading" && (
           <div className="bg-surface p-6 text-secondary text-sm">Cargando estados...</div>
@@ -125,10 +133,10 @@ export default function ClientStatus() {
 
         {state === "success" && (
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="bg-surface p-6">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs uppercase tracking-[0.2em] text-secondary font-bold">Solicitudes</span>
-                <span className="text-xs text-secondary">{requestOrders.length} total</span>
+            <div className="bg-surface-container p-6 rounded-2xl border border-outline-variant/20">
+              <div className="flex items-center justify-between mb-4 border-b border-outline-variant/20 pb-2">
+                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Solicitudes</span>
+                <span className="text-xs text-secondary font-medium">{requestOrders.length} total</span>
               </div>
 
               {requestOrders.length === 0 ? (
@@ -161,10 +169,10 @@ export default function ClientStatus() {
               )}
             </div>
 
-            <div className="bg-surface p-6">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs uppercase tracking-[0.2em] text-secondary font-bold">Presupuestos</span>
-                <span className="text-xs text-secondary">{budgetOrders.length} total</span>
+            <div className="bg-surface-container p-6 rounded-2xl border border-outline-variant/20">
+              <div className="flex items-center justify-between mb-4 border-b border-outline-variant/20 pb-2">
+                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Presupuestos</span>
+                <span className="text-xs text-secondary font-medium">{budgetOrders.length} total</span>
               </div>
 
               {budgetOrders.length === 0 ? (
@@ -191,6 +199,7 @@ export default function ClientStatus() {
             </div>
           </div>
         )}
+        </div>
       </div>
     </section>
   );
