@@ -68,7 +68,7 @@ export default function MobileMenuDrawer({
           <div className="flex items-center gap-4">
             <div
               className="h-12 w-12 rounded-full flex items-center justify-center text-white font-black tracking-tight"
-              style={{ backgroundColor: "#a92f32" }}
+              style={{ backgroundColor: "#2563eb" }}
             >
               {user.initials}
             </div>

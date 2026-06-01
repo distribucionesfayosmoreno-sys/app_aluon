@@ -90,7 +90,7 @@ export default function ForgotPasswordPage() {
     <main
       className="min-h-screen bg-[var(--ag-background)] text-on-surface"
       style={{
-        "--ag-primary": "var(--ag-primary, #a92f32)",
+        "--ag-primary": "var(--ag-primary, #2563eb)",
         "--ag-secondary": "var(--ag-secondary, #605b77)",
         "--ag-background": "var(--ag-background, #fcf9f8)",
         "--ag-surface": "var(--ag-surface, #ffffff)",
@@ -145,7 +145,7 @@ export default function ForgotPasswordPage() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(169,47,50,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
+                className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(37,99,235,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
               >
                 {status === "submitting" ? "Enviando..." : "Enviar código"}
               </button>
@@ -202,7 +202,7 @@ export default function ForgotPasswordPage() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(169,47,50,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
+                className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(37,99,235,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
               >
                 {status === "submitting" ? "Actualizando..." : "Actualizar contraseña"}
               </button>
@@ -211,7 +211,7 @@ export default function ForgotPasswordPage() {
             <button
               type="button"
               onClick={() => navigate("/login")}
-              className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(169,47,50,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
+              className="w-full rounded-xl bg-[var(--ag-primary)] py-3 text-sm font-semibold text-[var(--ag-on-primary)] shadow-[0_12px_30px_-18px_rgba(37,99,235,0.8)] transition hover:brightness-105 active:translate-y-[1px]"
             >
               Volver al login
             </button>

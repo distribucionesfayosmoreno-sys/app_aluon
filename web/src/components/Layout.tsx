@@ -17,7 +17,7 @@ function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
     <Link
       to={to}
       className={`font-inter text-[10px] uppercase tracking-widest font-bold transition-colors ${
-        isActive ? "text-[#a92f32] scale-110" : "text-[#605b77] hover:text-[#a92f32]"
+        isActive ? "text-[#2563eb] scale-110" : "text-[#605b77] hover:text-[#2563eb]"
       }`}
     >
       {children}
@@ -90,7 +90,7 @@ export default function Layout() {
             aria-label="Confirmar cierre de sesión"
           >
             <div className="px-6 pt-6 pb-4">
-              <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Cuenta</div>
+              <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#2563eb]">Cuenta</div>
               <h3 className="font-headline font-black text-xl mt-2 text-on-surface">¿Cerrar sesión?</h3>
               <p className="text-sm text-secondary mt-2">
                 Perderás el acceso hasta volver a iniciar sesión.
@@ -106,7 +106,7 @@ export default function Layout() {
               </button>
               <button
                 type="button"
-                className="flex-1 h-11 rounded-full bg-gradient-to-br from-[#a92f32] to-[#8c2427] text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-95"
+                className="flex-1 h-11 rounded-full bg-gradient-to-br from-[#2563eb] to-[#1e40af] text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-95"
                 onClick={handleLogout}
               >
                 Cerrar sesión
