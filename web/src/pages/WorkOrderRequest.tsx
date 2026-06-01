@@ -87,31 +87,38 @@ export default function WorkOrderRequest() {
   };
 
   return (
-    <section className="bg-surface-container-low py-10 px-4 md:px-16">
-      <div className="max-w-4xl mx-auto space-y-8">
-        <div className="flex items-start justify-between gap-4">
+    <section className="bg-surface-container-low min-h-screen py-6 px-4 md:px-16">
+      <div className="max-w-4xl mx-auto space-y-6">
+        <header className="bg-surface rounded-2xl p-5 border border-outline-variant/30 flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs uppercase tracking-[0.3em] text-secondary font-bold mb-2">Configuración · Medidas</div>
-            <h2 className="font-headline font-bold text-3xl md:text-4xl">Formulario de solicitud</h2>
-            <p className="text-secondary mt-2 max-w-xl">
-              Completa las medidas y adjunta los archivos necesarios. Enviaremos tu solicitud directamente a la bandeja
-              de órdenes de trabajo.
-            </p>
+            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Configuración · Medidas</div>
+            <h2 className="font-headline font-black text-lg text-on-surface mt-0.5">Formulario de Solicitud</h2>
           </div>
-          <button
-            className="text-xs uppercase tracking-[0.2em] font-bold text-primary hidden md:inline-flex items-center gap-2"
-            onClick={() => navigate("/")}
-            type="button"
-          >
-            Volver al catálogo
-            <span className="material-symbols-outlined text-sm">arrow_back</span>
-          </button>
-        </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex flex-col items-end select-none bg-surface-container border border-outline-variant/20 py-1 px-2.5 rounded-lg">
+              <span className="text-[9px] font-black tracking-[0.15em] text-[#a92f32]">ALUON</span>
+              <span className="text-[7px] font-semibold text-secondary uppercase tracking-wider animate-pulse" style={{ fontSize: '7px', lineHeight: '1.1' }}>Aluminio Soldado</span>
+            </div>
+            <button
+              className="text-[10px] font-bold uppercase tracking-widest text-[#a92f32] active:scale-95 transition-transform"
+              onClick={() => navigate("/")}
+              type="button"
+            >
+              Volver
+            </button>
+          </div>
+        </header>
 
-        <div className="bg-surface p-6 md:p-8 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 items-center">
+        <div className="bg-surface rounded-3xl p-5 md:p-6 border border-outline-variant/20 shadow-md space-y-6">
+          <p className="text-secondary max-w-xl text-sm mb-2">
+            Completa las medidas y adjunta los archivos necesarios. Enviaremos tu solicitud directamente a la bandeja
+            de órdenes de trabajo.
+          </p>
+
+        <div className="bg-surface-container p-6 rounded-2xl border border-outline-variant/20 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 items-center">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">Modelo seleccionado</div>
-            <h3 className="font-headline font-bold text-2xl mt-3">{selectedModel?.title}</h3>
+            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Modelo seleccionado</div>
+            <h3 className="font-headline font-black text-2xl mt-2">{selectedModel?.title}</h3>
             <p className="text-secondary mt-3 text-sm">{selectedModel?.desc}</p>
           </div>
           <div className="relative h-48 rounded-xl overflow-hidden">
@@ -127,9 +134,9 @@ export default function WorkOrderRequest() {
           </div>
         </div>
 
-        <form className="bg-surface p-6 md:p-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold mb-3">Medidas (mm)</div>
+            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32] mb-3">Medidas (mm)</div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 className="bg-surface-container-low p-3 text-sm"
@@ -187,9 +194,9 @@ export default function WorkOrderRequest() {
             </div>
           ) : null}
 
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4 mt-6">
             <button
-              className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 text-xs font-bold uppercase tracking-widest flex items-center gap-3 disabled:opacity-60"
+              className="bg-gradient-to-br from-[#a92f32] to-[#8c2427] text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 disabled:opacity-60 rounded-xl transition-all hover:scale-[1.02] active:scale-95"
               disabled={status === "submitting"}
               type="submit"
             >
@@ -198,6 +205,7 @@ export default function WorkOrderRequest() {
             </button>
           </div>
         </form>
+        </div>
       </div>
     </section>
   );

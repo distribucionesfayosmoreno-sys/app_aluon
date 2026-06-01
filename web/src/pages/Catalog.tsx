@@ -18,16 +18,22 @@ export default function Catalog() {
   );
 
   return (
-    <section className="bg-surface-container-low md:px-16">
-      <div className="max-w-6xl">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="hidden md:flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-secondary font-bold">
-            <span className="w-8 h-px bg-outline-variant/40"></span>
-            <span>Premium Series</span>
+    <section className="bg-surface-container-low min-h-screen py-6 px-4 md:px-16">
+      <div className="max-w-6xl mx-auto space-y-6">
+        <header className="bg-surface rounded-2xl p-5 border border-outline-variant/30 flex items-center justify-between shadow-sm">
+          <div>
+            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Catálogo</div>
+            <h2 className="font-headline font-black text-lg text-on-surface mt-0.5">Premium Series</h2>
           </div>
-        </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex flex-col items-end select-none bg-surface-container border border-outline-variant/20 py-1 px-2.5 rounded-lg">
+              <span className="text-[9px] font-black tracking-[0.15em] text-[#a92f32]">ALUON</span>
+              <span className="text-[7px] font-semibold text-secondary uppercase tracking-wider animate-pulse" style={{ fontSize: '7px', lineHeight: '1.1' }}>Aluminio Soldado</span>
+            </div>
+          </div>
+        </header>
 
-        <div className="relative overflow-hidden bg-surface" style={{ paddingBottom: "5rem!important" }}>
+        <div className="relative overflow-hidden bg-surface rounded-3xl border border-outline-variant/20 shadow-md" style={{ paddingBottom: "5rem!important" }}>
           <img
             alt={current.title}
             className="absolute inset-0 w-full h-full object-cover object-[center_35%] transition-all duration-500 ease-out opacity-100 scale-100"
