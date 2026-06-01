@@ -22,12 +22,12 @@ export default function Catalog() {
       <div className="max-w-6xl mx-auto space-y-6">
         <header className="bg-surface rounded-2xl p-5 border border-outline-variant/30 flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Catálogo</div>
+            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#2563eb]">Catálogo</div>
             <h2 className="font-headline font-black text-lg text-on-surface mt-0.5">Premium Series</h2>
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden md:flex flex-col items-end select-none bg-surface-container border border-outline-variant/20 py-1 px-2.5 rounded-lg">
-              <span className="text-[9px] font-black tracking-[0.15em] text-[#a92f32]">ALUON</span>
+              <span className="text-[9px] font-black tracking-[0.15em] text-[#2563eb]">ALUON</span>
               <span className="text-[7px] font-semibold text-secondary uppercase tracking-wider animate-pulse" style={{ fontSize: '7px', lineHeight: '1.1' }}>Aluminio Soldado</span>
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function Catalog() {
               <p className="text-surface/80 text-sm md:text-base max-w-md mb-6">{current.desc}</p>
               <div className="flex flex-wrap gap-3">
                 <button
-                  className="group relative bg-primary text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 transition-all duration-200 hover:bg-blue-700 active:scale-[0.98] rounded-xl"
+                  className="group relative bg-[#2563eb] text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 transition-all duration-200 hover:bg-[#1e40af] active:scale-[0.98] rounded-xl"
                   onClick={() => navigate(`/budget?model=${selected}`)}
                   type="button"
                 >
