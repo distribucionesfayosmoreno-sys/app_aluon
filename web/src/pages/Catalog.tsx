@@ -71,7 +71,7 @@ export default function Catalog() {
               <p className="text-surface/80 text-sm md:text-base max-w-md mb-6">{current.desc}</p>
               <div className="flex flex-wrap gap-3">
                 <button
-                  className="group relative bg-[#a92f32] text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 transition-all duration-200 hover:bg-[#8c2427] active:scale-[0.98]"
+                  className="group relative bg-[#a92f32] text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 transition-all duration-200 hover:bg-[#8c2427] active:scale-[0.98] rounded-xl"
                   onClick={() => navigate(`/budget?model=${selected}`)}
                   type="button"
                 >
@@ -79,7 +79,7 @@ export default function Catalog() {
                   <span className="material-symbols-outlined text-sm relative">calculate</span>
                 </button>
                 <button
-                  className="group relative border border-surface/70 text-surface px-6 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 transition-all duration-200 hover:border-surface hover:bg-surface/10 active:scale-[0.98]"
+                  className="group relative border border-surface/70 text-surface px-6 py-3 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 transition-all duration-200 hover:border-surface hover:bg-surface/10 active:scale-[0.98] rounded-xl overflow-hidden"
                   onClick={() => navigate(`/request?model=${selected}`)}
                   type="button"
                 >

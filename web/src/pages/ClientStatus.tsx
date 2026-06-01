@@ -100,11 +100,11 @@ export default function ClientStatus() {
       <div className="max-w-5xl mx-auto space-y-6">
         <header className="bg-surface rounded-2xl p-5 border border-outline-variant/30 flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Estado</div>
+            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-[#2563eb]">Estado</div>
             <h2 className="font-headline font-black text-lg text-on-surface mt-0.5">Mis Solicitudes y Presupuestos</h2>
           </div>
           <div className="hidden md:flex flex-col items-end select-none bg-surface-container border border-outline-variant/20 py-1 px-2.5 rounded-lg">
-            <span className="text-[9px] font-black tracking-[0.15em] text-[#a92f32]">ALUON</span>
+            <span className="text-[9px] font-black tracking-[0.15em] text-[#2563eb]">ALUON</span>
             <span className="text-[7px] font-semibold text-secondary uppercase tracking-wider animate-pulse" style={{ fontSize: '7px', lineHeight: '1.1' }}>Aluminio Soldado</span>
           </div>
         </header>
@@ -135,7 +135,7 @@ export default function ClientStatus() {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="bg-surface-container p-6 rounded-2xl border border-outline-variant/20">
               <div className="flex items-center justify-between mb-4 border-b border-outline-variant/20 pb-2">
-                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Solicitudes</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#2563eb]">Solicitudes</span>
                 <span className="text-xs text-secondary font-medium">{requestOrders.length} total</span>
               </div>
 
@@ -171,7 +171,7 @@ export default function ClientStatus() {
 
             <div className="bg-surface-container p-6 rounded-2xl border border-outline-variant/20">
               <div className="flex items-center justify-between mb-4 border-b border-outline-variant/20 pb-2">
-                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#a92f32]">Presupuestos</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#2563eb]">Presupuestos</span>
                 <span className="text-xs text-secondary font-medium">{budgetOrders.length} total</span>
               </div>
 
