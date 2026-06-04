@@ -134,7 +134,7 @@ export default function BudgetWizardPage() {
             <OptionsStep
               savedItems={wizard.savedItems}
               itemDraft={wizard.itemDraft}
-              onAddDoor={wizard.addCurrentItem}
+              onAddDoor={wizard.startNewDoor}
               onRemoveDoor={wizard.removeItem}
               onEditDoor={wizard.editItem}
               onReset={wizard.reset}

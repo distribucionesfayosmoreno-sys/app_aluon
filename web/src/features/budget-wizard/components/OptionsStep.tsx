@@ -24,6 +24,7 @@ export const OptionsStep = ({
   submitting,
 }: Props) => {
   const [detailOpen, setDetailOpen] = useState(false);
+  const canFinalize = savedItems.length > 0;
 
   const allItems = [...savedItems];
   if (itemDraft && allItems.length === 0) {
@@ -46,7 +47,7 @@ export const OptionsStep = ({
         <span className="text-[10px] uppercase tracking-widest text-secondary font-bold block">Continuar</span>
         <button
           type="button"
-          disabled={submitting}
+          disabled={submitting || !canFinalize}
           onClick={onFinalize}
           className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-2xl text-white font-black text-xs uppercase tracking-widest transition-all duration-200"
           style={{
@@ -55,7 +56,7 @@ export const OptionsStep = ({
           }}
         >
           <span className="material-symbols-outlined text-sm">save</span>
-          {submitting ? 'Guardando...' : 'GUARDAR PRESUPUESTO'}
+          {submitting ? 'Guardando...' : 'FINALIZAR PRESUPUESTO'}
         </button>
 
         <button

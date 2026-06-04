@@ -226,6 +226,12 @@ export const useBudgetWizard = (initialModelId?: string | null) => {
     setStep("ACCIONES");
   };
 
+  const startNewDoor = () => {
+    setError("");
+    resetCurrentDoor();
+    setStep("MODELO");
+  };
+
   const removeItem = (index: number) => {
     setSavedItems(prev => prev.filter((_, i) => i !== index));
   };
@@ -384,6 +390,7 @@ export const useBudgetWizard = (initialModelId?: string | null) => {
     selectProduct,
     selectVariant,
     addCurrentItem,
+    startNewDoor,
     removeItem,
     editItem,
     finalize,
